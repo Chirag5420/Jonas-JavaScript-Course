@@ -26,3 +26,21 @@ language = "Hindi";
 //COUNTRY = "SINGAPORE";
 
 console.log("language Data Type : " + typeof language);
+
+// LECTURE : Basic Operators
+//Task 1
+console.log("Number of people in each half of the country : (in millions) " + (population/2));
+
+//Task 2
+console.log("Increased the population by 1 : " + ++population);
+
+//Task 3
+console.log("Does India have more population than Finland (6 million)? : " + (population > 6));
+
+//Task 4
+console.log("Does India have less people than the average population of a country (33 million)? : " + (population < 33));
+
+//Task 5 
+let description = COUNTRY + " is in " + CONTINENT + ", and its " + population + " million people speak " + language;
+console.log(description);
+
