@@ -34,6 +34,7 @@ console.log(myFirstJob);
 */
 
 // ---------- DATA TYPES ----------- 
+/*
 let javascriptIsFun = true;
 console.log(javascriptIsFun);
 
@@ -57,4 +58,18 @@ console.log(typeof year); //OUTPUT : number
 
 //error in typeof operator
 console.log(typeof null); //null is like another data type, OUTPUT : object (regarded as a bug)
+*/
 
+// ------------ LET, CONST, VAR ------------
+// let - We use the 'let' keyword to declare variables that can change later during the execution of the program 
+
+let age = 30; 
+age = 31; //so we can reassign (or mutate) the value to the variable 'age'
+
+// const - We use the 'const' keyword to declare variables that are not suppsoed to change at any point in the future and must always have an initial value
+
+const birthYear = 1991; //it cannot be reassigned (or immutable)
+
+// var - This is should be completely avoided. 'var' keyword is the old way to declare variables prior to ES6. It works quite similar to 'let' keyword but they are quite different. For instance, 'let' keyword is block-scoped and 'var' keyword is function-scoped
+var job = 'programmer';
+job = 'teacher';
