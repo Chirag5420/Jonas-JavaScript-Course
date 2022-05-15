@@ -110,6 +110,7 @@ console.log(now - 1991 > now - 2018);
 */
 
 // --------- OPERATOR PRECEDENCE ----------
+/*
 const now = 2037;
 const ageJonas = now - 1991; 
 const ageSarah = now - 2018; 
@@ -124,3 +125,30 @@ console.log(x, y);
 
 const averageAge = (ageJonas + ageSarah) / 2;
 console.log(ageJonas, ageSarah, averageAge);
+*/
+
+// --------- STRINGS AND TEMPLATE LITERALS -----------
+const firstName = "Jonas";
+const job = "teacher";
+const birthYear = 1991; 
+const year = 2037;
+
+const jonas = "I'm " + firstName + ", a " + (year - birthYear) + " years old " + job + "!";
+console.log(jonas);
+
+//Template Literals - We need to use the backticks (`) symbol to write a template literal
+const jonasNew = `I'm ${firstName} a ${year - birthYear} years old ${job}!`;
+console.log(jonasNew);
+
+//Use backticks (`) for any regular string 
+console.log(`Just a regular string ...`);
+
+//Multiline strings 
+console.log("String with \n\
+multiple \n\
+lines");
+
+//Use backticks (`) to create multiline string 
+console.log(`String with
+multiple
+lines`);
