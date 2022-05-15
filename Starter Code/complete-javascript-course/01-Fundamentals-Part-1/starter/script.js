@@ -222,7 +222,7 @@ console.log('10' - '4' - '3' - 2 + '5'); // '15'
 
     Truthy Values : Any number that is not 0 or any string that is not empty would be converted to true
 */
-
+/*
 console.log(Boolean(0)); //false
 console.log(Boolean(undefined)); //false
 console.log(Boolean('Jonas')); //true
@@ -244,3 +244,27 @@ if(height){
 else{
     console.log("Height is UNDEFINED");
 }
+*/
+
+// --------- EQUALITY OPERATORS (== vs ===)
+// === - Strict Equality Operator (does not perform type coercion) [PREFERRED]
+// == - Loose Equality Operator (performs type coercion)
+const age = 18; 
+if(age === 18) console.log("You just became an adult :D (strict)");
+
+if(age == 18) console.log("You just became an adult :D (loose)");
+
+const favourite = Number(prompt("What's your favourite number?"));
+console.log(favourite); // 23
+
+if(favourite === 23){
+    console.log("Cool! 23 is an amazing number!");
+} else if(favourite === 7){
+    console.log("7 is also a cool number!");
+} else if(favourite === 9){
+    console.log("9 is also a cool number!");
+} else{
+    console.log("Number is not 23 or 7");
+}
+
+if(favourite !== 23) console.log("Why not 23?");

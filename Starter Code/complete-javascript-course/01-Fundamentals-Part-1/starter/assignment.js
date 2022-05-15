@@ -75,3 +75,20 @@ else{
     '123' < 57; --> false
     5 + 6 + '4' + 9 - 4 - 2; --> 1143
 */
+
+//LECTURE : Equality Operators : == vs ===
+//Task 1
+const numNeighbours = Number(prompt("How many neighbour countries does your country have?"));
+
+if(numNeighbours === 1){
+    console.log("Only 1 border!");
+} else if(numNeighbours > 1){
+    console.log("More than 1 border");
+} else{
+    console.log("No borders");
+}
+
+//Task 8 
+//We use === because it is a strict equality operator so it compares both value and type. Initially when we had used == then it only to used to check for value. But once we included ===, then the test case used to fail because by default the prompt() function returns 'String' type. So now we had to convert the type manually using Number() function. 
+
+
