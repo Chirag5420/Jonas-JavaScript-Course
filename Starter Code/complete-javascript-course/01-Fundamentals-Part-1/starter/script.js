@@ -156,6 +156,7 @@ lines`);
 */
 
 // -------- IF/ELSE STATEMENTS --------
+/*
 const age = 15; 
 
 //If-Else Control Structure
@@ -178,3 +179,36 @@ else{
 }
 
 console.log(century);
+*/
+
+// -------- TYPE CONVERSION / TYPE COERCION --------
+/* 
+    Type Conversion : Type Conversion is when we manually convert from one type to another. 
+    Type Coercion : Type Coercion is when JavaScript automatically converts types behind the scenes for us, so it happens implicitly. 
+*/
+//TYPE CONVERSION 
+const inputYear = "1991";
+
+//Convert Strings to Number using this function 'Number()'
+console.log(Number(inputYear), inputYear);
+console.log(Number(inputYear) + 18);
+
+console.log(Number("Jonas")); //Output : NaN (Not a Number) Since 'Jonas' cannot be converted to a number
+
+//Convert Number to Strings using this function 'String()'
+console.log(String(23));
+
+//TYPE COERCION 
+console.log("I am " + 23 + " years old"); 
+console.log('23' - '10' - 3); //Output : 10 (JavaScript automatically converts from String to Number)
+console.log('23' + '10' + 3); //Output  : 23103 (JavaScript now converts Number to String)
+console.log('23' * '2'); //Output : 46
+
+//GUESS THE OUTPUT 
+let n = '1' + 1; // '11'
+n = n - 1;
+console.log(n); // 10
+
+console.log(2 + 3 + 4 + '5'); // '95'
+
+console.log('10' - '4' - '3' - 2 + '5'); // '15'
