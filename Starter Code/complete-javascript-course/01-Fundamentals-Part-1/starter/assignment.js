@@ -44,3 +44,23 @@ console.log("Does India have less people than the average population of a countr
 let description = COUNTRY + " is in " + CONTINENT + ", and its " + population + " million people speak " + language;
 console.log(description);
 
+//LECTURE : Strings and Template Literals
+//Task 1
+let newDescription = `${COUNTRY} is in ${CONTINENT}, and its ${population} million people speak ${language}`;
+console.log(newDescription);
+
+//LECTURE : Taking Decisions : if / else statements
+//Task 1
+
+//Test Data 1
+//population = 13;
+
+//Test Data 2
+//population = 130;
+if(population > 33){
+    console.log(`${COUNTRY}'s population is above average`);
+}
+else{
+    const lessPopulation = 33 - population; 
+    console.log(`${COUNTRY}'s population is ${lessPopulation} million below average`);
+}
