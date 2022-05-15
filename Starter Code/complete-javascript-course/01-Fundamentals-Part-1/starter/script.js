@@ -187,6 +187,7 @@ console.log(century);
     Type Coercion : Type Coercion is when JavaScript automatically converts types behind the scenes for us, so it happens implicitly. 
 */
 //TYPE CONVERSION 
+/*
 const inputYear = "1991";
 
 //Convert Strings to Number using this function 'Number()'
@@ -212,3 +213,34 @@ console.log(n); // 10
 console.log(2 + 3 + 4 + '5'); // '95'
 
 console.log('10' - '4' - '3' - 2 + '5'); // '15'
+*/ 
+
+// -------- TRUTHY AND FALSY VALUES --------
+/*
+    5 Falsy Values : 0, '', undefined, null, NaN
+    All of the above 5 values are not false but would be converted to false when we attempt to convert them to boolean
+
+    Truthy Values : Any number that is not 0 or any string that is not empty would be converted to true
+*/
+
+console.log(Boolean(0)); //false
+console.log(Boolean(undefined)); //false
+console.log(Boolean('Jonas')); //true
+console.log(Boolean({})); //true
+console.log(Boolean('')); //false
+
+const money = 0;
+if(money){
+    console.log("Don't spend it all ;)");
+}
+else{
+    console.log("You should get a job!");
+}
+
+let height; 
+if(height){
+    console.log("YAY! Height is defined");
+}
+else{
+    console.log("Height is UNDEFINED");
+}

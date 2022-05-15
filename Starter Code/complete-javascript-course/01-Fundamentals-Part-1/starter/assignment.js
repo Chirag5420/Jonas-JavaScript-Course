@@ -64,3 +64,14 @@ else{
     const lessPopulation = 33 - population; 
     console.log(`${COUNTRY}'s population is ${lessPopulation} million below average`);
 }
+
+//LECTURE : Type Conversion and Coercion 
+//Task 1
+/*
+    Predict the result 
+    '9' - '5'; --> 4
+    '19' - '13' + '17'; --> '617'
+    '19' - '13' + 17; --> 23
+    '123' < 57; --> false
+    5 + 6 + '4' + 9 - 4 - 2; --> 1143
+*/
