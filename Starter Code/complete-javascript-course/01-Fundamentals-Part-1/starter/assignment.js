@@ -124,3 +124,6 @@ switch(language){
     default: 
         console.log("Great languages too :D");
 }
+
+//LECTURE : The Conditional (Ternary) Operator 
+console.log(`Portugal's population is ${population > 33 ? "above average" :  "below average"}`);
