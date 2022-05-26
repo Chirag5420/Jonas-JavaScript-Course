@@ -98,7 +98,7 @@ function fruitProcessor(apples, oranges){
 
 console.log(fruitProcessor(2, 3)); 
 */
-
+/*
 // ------- Reviewing Functions --------
 const calcAge = function(birthYear) {
     return 2037 - birthYear;
@@ -119,3 +119,53 @@ const yearsUntilRetirement = function (birthYear, firstName) {
 
 console.log(yearsUntilRetirement(1991, "Jonas"));
 console.log(yearsUntilRetirement(1950, "Mike"));
+*/
+
+// ------- Introduction to Arrays -------
+const friends = ["Michael", "Steven", "Peter"];
+console.log(friends);
+
+const y = new Array(1991, 1984, 2008, 2020);
+
+console.log(friends[0]);
+console.log(friends[2]);
+
+console.log(friends.length);
+console.log(friends[friends.length - 1]); //to retrieve the last element in the array
+
+friends[2] = "Jay";
+console.log(friends);
+// friends = ['Bob', 'Alice'] --> TypeError (we cannot change the entire Array as its a const)
+
+// We can mutate arrays even though we declared it as a const because it is of non-primitive type. The variables that are declared as primitive types with const keyword cannot be altered. 
+
+// Array can hold different types of values all at the same time 
+const firstName = "Jonas";
+const jonas = [firstName, "Schmedtmann", 2037 - 1991, "Teacher", friends];
+console.log(jonas);
+console.log(jonas.length);
+
+// Exercise
+const calcAge = function(birthYear) {
+    return 2037 - birthYear;
+}
+const years = [1990, 1967, 2002, 2010, 2018]; 
+
+console.log(calcAge(years)); // NaN (Not a Number)
+
+// years + 10
+// The above syntax would convert the array into a string and append the number 10 at the last 
+// Output : "1990,1967,2002,2010,201810"
+
+// years - 10
+// NaN
+
+// This basically concludes that we cannot do operations with array 
+
+const age1 = calcAge(years[0]);
+const age2 = calcAge(years[1]);
+const age3 = calcAge(years[years.length - 1]);
+console.log(age1, age2, age3);
+
+const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length -1])];
+console.log(ages);
