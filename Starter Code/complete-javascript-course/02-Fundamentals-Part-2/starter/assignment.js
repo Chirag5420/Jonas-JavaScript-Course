@@ -60,3 +60,17 @@ console.log("Percentage of world (United States of America) : " + populationUS3)
 
 const populationUK3 = percentageOfWorld1(67.44); 
 console.log("Percentage of world (United Kingdom) : " + populationUK3);
+
+// LECTURE : Functions Calling Other Functions 
+function describePopulation(country, population){
+    return `${country} has ${population} million people, which is about ${percentageOfWorld1(population)}% of the world.`;
+}
+
+const describeSG = describePopulation("Singapore", 5.74); 
+console.log(describeSG);
+
+const describeUS = describePopulation("United States of America", 331.4); 
+console.log(describeUS);
+
+const describeUK = describePopulation("United Kingdom", 67.44); 
+console.log(describeUK);
