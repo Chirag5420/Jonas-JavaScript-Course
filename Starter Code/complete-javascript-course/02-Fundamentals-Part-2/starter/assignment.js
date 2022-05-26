@@ -17,3 +17,34 @@ console.log(countryUS);
 
 const countryUK = describeCountry("United Kingdom", 67.44, "London");
 console.log(countryUK);
+
+//LECTURE : Function Declarations vs Expressions 
+// Task 1 
+// Function Declaration 
+const worldPopulation = 7900;
+function percentageOfWorld1(population){
+    return (population / worldPopulation) * 100; 
+}
+
+const populationSG = percentageOfWorld1(5.74); 
+console.log("Percentage of world (Singapore) : " + populationSG);
+
+const populationUS = percentageOfWorld1(331.4); 
+console.log("Percentage of world (United States of America) : " + populationUS);
+
+const populationUK = percentageOfWorld1(67.44); 
+console.log("Percentage of world (United Kingdom) : " + populationUK);
+
+// Function Expression 
+const percentageOfWorld2 = function (population){
+    return (population / worldPopulation) * 100; 
+}
+
+const populationSG2 = percentageOfWorld2(5.74); 
+console.log("Percentage of world (Singapore) : " + populationSG2);
+
+const populationUS2 = percentageOfWorld2(331.4); 
+console.log("Percentage of world (United States of America) : " + populationUS2);
+
+const populationUK2 = percentageOfWorld1(67.44); 
+console.log("Percentage of world (United Kingdom) : " + populationUK2);
