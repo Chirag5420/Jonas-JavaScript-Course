@@ -48,3 +48,15 @@ console.log("Percentage of world (United States of America) : " + populationUS2)
 
 const populationUK2 = percentageOfWorld1(67.44); 
 console.log("Percentage of world (United Kingdom) : " + populationUK2);
+
+//LECTURE : Arrow Functions 
+const percentageOfWorld3 = population => (population / worldPopulation) * 100;
+
+const populationSG3 = percentageOfWorld3(5.74); 
+console.log("Percentage of world (Singapore) : " + populationSG3);
+
+const populationUS3 = percentageOfWorld2(331.4); 
+console.log("Percentage of world (United States of America) : " + populationUS3);
+
+const populationUK3 = percentageOfWorld1(67.44); 
+console.log("Percentage of world (United Kingdom) : " + populationUK3);

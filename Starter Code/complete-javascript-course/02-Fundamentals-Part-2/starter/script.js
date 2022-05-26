@@ -43,7 +43,7 @@ const appleOrangeJuice = fruitProcessor(2, 4);
 console.log(appleOrangeJuice);
 */
 // ------- Function Declarations vs Expressions -------
-
+/*
 // Function Declaration
 function calcAge1(birthYear){
     return 2037 - birthYear; 
@@ -62,3 +62,22 @@ console.log(age1, age2);
 
 // Difference between Function Declaration and Function Expression 
 // - We can call Function Declaration before they are defined in the code 
+*/
+
+// ------- Arrow Functions --------
+// An Arrow Function is simply a form of Function Expression that is shorter and therefore faster to write
+
+// Arrow Function 
+const calcAge3 = birthYear => 2037 - birthYear;
+const age3 = calcAge3(1991);
+console.log(age3);
+
+const yearsUntilRetirement = (birthYear, firstName) => {
+    const age = 2037 - birthYear;
+    const retirement = 65 - age;
+    //return retirement;
+    return `${firstName} retires in ${retirement} years`;
+}
+
+console.log(yearsUntilRetirement(1991, "Jonas"));
+console.log(yearsUntilRetirement(1980, "Bob"));
