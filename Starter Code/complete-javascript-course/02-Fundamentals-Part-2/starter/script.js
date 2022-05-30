@@ -120,7 +120,7 @@ const yearsUntilRetirement = function (birthYear, firstName) {
 console.log(yearsUntilRetirement(1991, "Jonas"));
 console.log(yearsUntilRetirement(1950, "Mike"));
 */
-
+/*
 // ------- Introduction to Arrays -------
 const friends = ["Michael", "Steven", "Peter"];
 console.log(friends);
@@ -169,3 +169,40 @@ console.log(age1, age2, age3);
 
 const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length -1])];
 console.log(ages);
+*/
+
+// -------- Basic Array Operations (Methods) ---------
+const friends = ["Michael", "Steven", "Peter"];
+
+// -------- ADD ELEMENTS -------
+// push function is used to insert values at the end of the array and it returns the length of the array
+const newLength = friends.push("Jay"); 
+console.log(friends);
+console.log(newLength);
+
+// unshift function is used to insert values at the beginning of the array and it returns the length of the array
+friends.unshift("John"); 
+console.log(friends);
+
+// ------- REMOVE ELEMENTS -------
+// pop function is used to remove the last element of the array and it returns the removed element
+friends.pop();
+const popped = friends.pop();
+console.log(popped);
+console.log(friends);
+
+// shift function is used to remove the first element and it returns the removed element 
+friends.shift(); 
+console.log(friends);
+
+// indexOf function returns the first occurrence of the element in the array and if not present returns -1 
+console.log(friends.indexOf("Steven"));
+console.log(friends.indexOf("Bob"));
+
+// includes function (ES6 Function) returns true if the element is in the array and false otherwise. Besides it uses strict equality (does not do type coercion)
+console.log(friends.includes("Steven"));
+console.log(friends.includes("Bob"));
+
+if(friends.includes("Steven")){
+    console.log("You have a friend called Steven");
+}
