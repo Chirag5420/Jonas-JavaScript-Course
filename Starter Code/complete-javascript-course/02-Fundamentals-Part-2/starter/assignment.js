@@ -119,3 +119,15 @@ const myCountry = {
     neighbours: ['Pakistan', 'Nepal', 'Bhutan', 'Bangladesh', 'China']
 };
 console.log(myCountry);
+
+// LECTURE : Dot vs. Bracket Notation 
+// Task 1
+const myCountryDesc = `${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}`;
+console.log(myCountryDesc);
+
+// Task 2
+myCountry.population += 2;
+console.log(myCountry);
+
+myCountry['population'] -= 2;
+console.log(myCountry);
