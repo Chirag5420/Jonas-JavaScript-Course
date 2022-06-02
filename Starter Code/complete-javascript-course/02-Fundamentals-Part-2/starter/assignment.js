@@ -109,3 +109,13 @@ if(!neighbours.includes("Germany")){
 const NepalIndex = neighbours.indexOf("Nepal");
 neighbours[NepalIndex] = "Republic of Nepal";
 console.log(neighbours);
+
+// LECTURE : Introduction to Objects 
+const myCountry = {
+    country: 'India',
+    capital: 'New Delhi',
+    language: 'Hindi',
+    population: 1380, 
+    neighbours: ['Pakistan', 'Nepal', 'Bhutan', 'Bangladesh', 'China']
+};
+console.log(myCountry);
