@@ -207,7 +207,7 @@ if(friends.includes("Steven")){
     console.log("You have a friend called Steven");
 }
 */
-
+/*
 // ------- Introduction to Objects --------
 const jonasArray = [
     'Jonas',
@@ -229,3 +229,48 @@ const jonas = {
 
 // Each of the keys (firstName, lastName, age, job, friends) is also called a property. So we can say this object jonas has five properties. 
 // Moreover, we should use arrays for more ordered data and objects for more unstructured data. 
+*/
+// ------- Dot vs. Bracket Notation --------
+const jonas = {
+    firstName: 'Jonas',
+    lastName: 'Schmedtmann',
+    age: 2037 - 1991, 
+    job: 'Teacher', 
+    friends: ['Michael', 'Peter', 'Steven']
+};
+
+console.log(jonas);
+
+// Retrieving a property from an object using Dot Notation 
+console.log(jonas.lastName);
+
+// Retrieiving a property from an object using Bracket Notation 
+console.log(jonas['lastName']);
+
+// A big difference between the Dot Notation and the Bracket Notation is that in the Bracket Notation we can put any expression inside the brackets, so we don't have to explicitly write the string 'lastName' instead we can compute it from some operation
+
+const nameKey = 'Name'; 
+console.log(jonas['first' + nameKey]);
+console.log(jonas['last' + nameKey]);
+
+// However the above thing will not work with the Dot Notation. So we have to use the real final property name and not a computed property name 
+// console.log(jonas.'last' + nameKey); 
+
+const interestedIn = prompt("What do you want to know about Jonas? Choose between firstName, lastName, age, job, and friends");
+console.log(interestedIn);
+
+// console.log(jonas.interestedIn); // undefined - we get this when we try to fetch a property that does not exist
+
+if(jonas[interestedIn]){
+    console.log(jonas[interestedIn]);
+} else {
+    console.log("Wrong request! Choose between firstName, lastName, age, job, and friends");
+}
+
+jonas.location = "Portugal";
+jonas['twitter'] = "@jonasschmedtman";
+console.log(jonas);
+
+// CHALLENGE
+// "Jonas has 3 friends, and his best friend is called Michael"
+console.log(`${jonas['firstName']} has ${jonas['friends'].length} friends, and his best friend is called ${jonas['friends'][0]}`);
