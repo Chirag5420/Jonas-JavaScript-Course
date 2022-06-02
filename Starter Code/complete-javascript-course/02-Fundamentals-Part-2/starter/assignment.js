@@ -86,3 +86,26 @@ console.log(populations.length === 4);
 const percentages = [percentageOfWorld1(populations[0]), percentageOfWorld1(populations[1]), percentageOfWorld1(populations[2]), percentageOfWorld1(populations[3])];
  
 console.log(percentages);
+
+// LECTURE : Basic Array Operations (Methods)
+// Task 1 
+const neighbours = ["Pakistan", "Nepal", "Bhutan", "Bangladesh", "China"];
+console.log(neighbours);
+
+// Task 2
+neighbours.push("Utopia");
+console.log(neighbours);
+
+// Task 3
+neighbours.pop(); 
+console.log(neighbours);
+
+// Task 4
+if(!neighbours.includes("Germany")){
+    console.log("Probably not a central European country :D");
+}
+
+// Task 5
+const NepalIndex = neighbours.indexOf("Nepal");
+neighbours[NepalIndex] = "Republic of Nepal";
+console.log(neighbours);
