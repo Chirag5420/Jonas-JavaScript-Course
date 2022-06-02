@@ -74,3 +74,15 @@ console.log(describeUS);
 
 const describeUK = describePopulation("United Kingdom", 67.44); 
 console.log(describeUK);
+
+// LECTURE : Introduction to Arrays 
+// Task 1 
+const populations = [5.74, 331.4, 67.44, 32.7];
+
+// Task 2
+console.log(populations.length === 4);
+
+// Task 3
+const percentages = [percentageOfWorld1(populations[0]), percentageOfWorld1(populations[1]), percentageOfWorld1(populations[2]), percentageOfWorld1(populations[3])];
+ 
+console.log(percentages);
