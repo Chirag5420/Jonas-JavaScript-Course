@@ -170,7 +170,7 @@ console.log(age1, age2, age3);
 const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length -1])];
 console.log(ages);
 */
-
+/*
 // -------- Basic Array Operations (Methods) ---------
 const friends = ["Michael", "Steven", "Peter"];
 
@@ -206,3 +206,26 @@ console.log(friends.includes("Bob"));
 if(friends.includes("Steven")){
     console.log("You have a friend called Steven");
 }
+*/
+
+// ------- Introduction to Objects --------
+const jonasArray = [
+    'Jonas',
+    'Schmedtmann',
+    2037 - 1991, 
+    'Teacher',
+    ['Michael', 'Peter', 'Steven']
+];
+
+// We use objects to define key-value pairs so that we can give each of the above values a name and going forward access them via their names instead of index numbers
+
+const jonas = {
+    firstName: 'Jonas',
+    lastName: 'Schmedtmann',
+    age: 2037 - 1991, 
+    job: 'Teacher', 
+    friends: ['Michael', 'Peter', 'Steven']
+};
+
+// Each of the keys (firstName, lastName, age, job, friends) is also called a property. So we can say this object jonas has five properties. 
+// Moreover, we should use arrays for more ordered data and objects for more unstructured data. 
