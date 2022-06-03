@@ -189,3 +189,16 @@ console.log(percentages2);
 // Task 3
 console.log(percentages.length === percentages2.length);
 // This is a better solution because we are avoiding DRY (Do Not Repeat Yourself) and its more efficiently creating and adding values to the array by invoking the push function inside the for loop
+
+// LECTURE : The while Loop 
+// Task 1
+const percentages3 = [];
+let i = 0; 
+while(i < populations.length){
+    percentages3.push(percentageOfWorld1(populations[i]));
+    i++;
+}
+console.log(percentages3);
+
+// Task 2
+// I feel both for loop and while loop are behaving equivanlently here
