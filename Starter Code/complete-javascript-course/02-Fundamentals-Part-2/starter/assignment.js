@@ -77,7 +77,7 @@ console.log(describeUK);
 
 // LECTURE : Introduction to Arrays 
 // Task 1 
-const populations = [5.74, 331.4, 67.44, 32.7];
+let populations = [5.74, 331.4, 67.44, 32.7];
 
 // Task 2
 console.log(populations.length === 4);
@@ -172,3 +172,20 @@ console.log(myCountry.checkIsland());
 for(let voter = 1; voter <= 50; voter++){
     console.log(`Voter number ${voter} is currently voting`);
 }
+
+// LECTURE: Looping Arrays, Breaking and Continuing 
+// Task 1
+populations = [5.74, 331.4, 67.44, 32.7];
+
+// Task 2
+const percentages2 = [];
+
+for(let i = 0; i < populations.length; i++){
+    percentages2.push(percentageOfWorld1(populations[i]));
+}
+
+console.log(percentages2);
+
+// Task 3
+console.log(percentages.length === percentages2.length);
+// This is a better solution because we are avoiding DRY (Do Not Repeat Yourself) and its more efficiently creating and adding values to the array by invoking the push function inside the for loop
