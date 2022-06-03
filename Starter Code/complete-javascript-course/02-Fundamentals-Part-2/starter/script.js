@@ -230,6 +230,7 @@ const jonas = {
 // Each of the keys (firstName, lastName, age, job, friends) is also called a property. So we can say this object jonas has five properties. 
 // Moreover, we should use arrays for more ordered data and objects for more unstructured data. 
 */
+/*
 // ------- Dot vs. Bracket Notation --------
 const jonas = {
     firstName: 'Jonas',
@@ -274,3 +275,56 @@ console.log(jonas);
 // CHALLENGE
 // "Jonas has 3 friends, and his best friend is called Michael"
 console.log(`${jonas['firstName']} has ${jonas['friends'].length} friends, and his best friend is called ${jonas['friends'][0]}`);
+*/
+
+// -------- Object Methods --------
+// const jonas = {
+//     firstName: 'Jonas',
+//     lastName: 'Schmedtmann',
+//     birthYear: 1991, 
+//     job: 'Teacher', 
+//     friends: ['Michael', 'Peter', 'Steven'],
+//     hasDriversLicense: true,
+
+//     // calcAge: function(birthYear){
+//     //     return 2037 - birthYear;
+//     // }
+
+//     // calcAge: function(){
+//     //     // console.log(this);
+//     //     return 2037 - this.birthYear;
+//     // }
+
+//     calcAge: function(){
+//         this.age = 2037 - this.birthYear; // we are creating a new parameter age and setting it to the value calculated
+//         return this.age;
+//     }
+// };
+
+//So now we only need to invoke the calcAge() function once so that the new parameter age can be added to the object. Following that we can normally invoke the age paramter by using the Dot Notation 
+// console.log(jonas.calcAge());
+// console.log(jonas.age);
+//console.log(jonas['calcAge'](1991));
+
+// CHALLENGE
+const jonas = {
+    firstName: 'Jonas',
+    lastName: 'Schmedtmann',
+    birthYear: 1991, 
+    job: 'Teacher', 
+    friends: ['Michael', 'Peter', 'Steven'],
+    hasDriversLicense: false,
+
+    calcAge: function(){
+        this.age = 2037 - this.birthYear; // we are creating a new parameter age and setting it to the value calculated
+        return this.age;
+    },
+
+    getSummary: function(){
+        this.calcAge();
+        const summary = `${this.firstName} is a ${this.age}-year old ${this.job}, and he has ${this.hasDriversLicense ? 'a' : 'no'} driver's license`;
+        return summary;
+    }
+};
+
+console.log(jonas.getSummary());

@@ -111,7 +111,7 @@ neighbours[NepalIndex] = "Republic of Nepal";
 console.log(neighbours);
 
 // LECTURE : Introduction to Objects 
-const myCountry = {
+let myCountry = {
     country: 'India',
     capital: 'New Delhi',
     language: 'Hindi',
@@ -131,3 +131,39 @@ console.log(myCountry);
 
 myCountry['population'] -= 2;
 console.log(myCountry);
+
+// LECTURE : Object Methods 
+// Task 1
+myCountry = {
+    country: 'India',
+    capital: 'New Delhi',
+    language: 'Hindi',
+    population: 1380, 
+    neighbours: ['Pakistan', 'Nepal', 'Bhutan', 'Bangladesh', 'China'],
+    describe : function(){
+        const countryDesc = `${this.country} has ${this.population} million ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}`;
+        return countryDesc; 
+    }
+};
+
+// Task 2
+console.log(myCountry.describe());
+
+// Task 3
+myCountry = {
+    country: 'India',
+    capital: 'New Delhi',
+    language: 'Hindi',
+    population: 1380, 
+    neighbours: ['Pakistan', 'Nepal', 'Bhutan', 'Bangladesh', 'China'],
+    describe : function(){
+        const countryDesc = `${this.country} has ${this.population} million ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}`;
+        return countryDesc; 
+    },
+    checkIsland : function(){
+        this.isIsland = this.neighbours.length === 0 ? true : false;
+        return this.isIsland;
+    }
+};
+
+console.log(myCountry.checkIsland());
