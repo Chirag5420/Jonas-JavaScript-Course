@@ -276,7 +276,7 @@ console.log(jonas);
 // "Jonas has 3 friends, and his best friend is called Michael"
 console.log(`${jonas['firstName']} has ${jonas['friends'].length} friends, and his best friend is called ${jonas['friends'][0]}`);
 */
-
+/*
 // -------- Object Methods --------
 // const jonas = {
 //     firstName: 'Jonas',
@@ -328,3 +328,10 @@ const jonas = {
 };
 
 console.log(jonas.getSummary());
+*/
+
+// --------- Iteration : The for Loop ----------
+// for loop keeps running while condition is TRUE 
+for(let rep = 1; rep <= 10; rep++){
+    console.log(`Lifting weights repetition ${rep} 🏋🏻‍♀️ `);
+}
