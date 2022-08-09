@@ -1,5 +1,6 @@
 'use strict';
 
+/*
 // For selecting an element in JavaScript, we need to use the document.querySelector() function
 // In this method, we need to pass in a selector in the same format as we would use in CSS. 
 // As 'message' is a class, we write .message. Had it been an id, we would write #message.
@@ -23,3 +24,15 @@ document.querySelector('.score').textContent = 20;
 console.log(document.querySelector('.guess').value); // OUTPUT : 
 document.querySelector('.guess').value = 23;
 console.log(document.querySelector('.guess').value); // OUTPUT : 23
+*/
+
+// ------ HANDLING CLICK EVENTS -------
+document.querySelector('.check').addEventListener
+('click', function (){
+    const guess = Number(document.querySelector('.guess').value); // using Number() function because by default when we input anything its treated as as string
+    console.log(guess, typeof guess);
+
+    if(!guess){
+        document.querySelector('.message').textContent = '⛔️ No number!';
+    }
+});
