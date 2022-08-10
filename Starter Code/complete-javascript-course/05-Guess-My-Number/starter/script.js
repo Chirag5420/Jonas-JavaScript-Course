@@ -27,9 +27,8 @@ console.log(document.querySelector('.guess').value); // OUTPUT : 23
 */
 
 // ------ HANDLING CLICK EVENTS -------
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
-document.querySelector('.number').textContent = secretNumber;
 
 document.querySelector('.check').addEventListener
 ('click', function (){
@@ -43,6 +42,8 @@ document.querySelector('.check').addEventListener
         //When player wins
     } else if (guess === secretNumber){
         document.querySelector('.message').textContent = '🎉 Correct Number!';
+
+        document.querySelector('.number').textContent = secretNumber;
 
         // NOTE : Whenever we want to modify CSS styles, we always need to assign the values in a string format. And remember to write the style is camelCase notation for style names consisting of more than one word
         document.querySelector('body').style.backgroundColor = '#60b347';
@@ -73,3 +74,32 @@ document.querySelector('.check').addEventListener
         
     }
 });
+
+///////////////////////////////////////
+// Coding Challenge #1
+
+/* 
+Implement a game rest functionality, so that the player can make a new guess! Here is how:
+
+1. Select the element with the 'again' class and attach a click event handler
+2. In the handler function, restore initial values of the score and secretNumber variables
+3. Restore the initial conditions of the message, number, score and guess input field
+4. Also restore the original background color (#222) and number width (15rem)
+
+GOOD LUCK 😀
+*/
+
+document.querySelector('.again').addEventListener(
+    'click', function (){
+        score = 20;
+        secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+        document.querySelector('.message').textContent = 'Start guessing...';
+        document.querySelector('.score').textContent = score;
+        document.querySelector('.number').textContent = '?';
+        document.querySelector('.guess').value = '';
+
+        document.querySelector('body').style.backgroundColor = '#222';
+        document.querySelector('.number').style.width = '15rem';
+    }
+);
