@@ -98,3 +98,37 @@
       - C++ Bindings & Thread Pool
       - Callback Queue 
 */
+
+/*
+    Execution Contexts and The Call Stack 
+    
+    How is JavaScript code executed? 
+    - We already know its executed in a Call Stack in the JS Engine. But let's dig a bit deeper now. 
+
+    JavaScript Code Execution
+    - Creation of global execution context (for top-level code)
+      - Top-level code is basically code that is not inside any function. So in the beginning, only the code outside of functions will be executed. This makes sense because functions should only be executed when they are called. 
+      - Execution Context : Environment in which a piece of JavaScript is executed. Stores all the necessary information for some code to be executed. 
+      - There is only ONE global execution context (EC) : Default context created for code that is not inside any function (top-level)
+    - Execution of top-level code (inside global EC)
+      - The computer CPU processes the machine code that it received. 
+    - Execution of functions and waiting for callbacks
+      - One execution context PER FUNCTION : For each function call, a new execution context is created. It contains all the information (arguments and parameters) that is necessary to run exactly that function. 
+      - When all the functions are done executing, the engine will basically keep waiting for callback functions to arrive so that it can execute these. 
+  
+    All these execution contexts make up the call stack. 
+
+    What's inside Execution Context? 
+    1. Variable Environment 
+       - let, const, and var declarations
+       - Functions 
+       - arguments object 
+    2. Scope Chain : It consists of references to variables that are located outside of the current function. And to keep track of the scope chain, it is stored in each execution context. 
+    3. this keyword 
+
+    IMPORTANT : Execution contexts belonging to Arrow Functions, do not get their own arguments keyword nor do they get the this keyword. 
+
+    The Call Stack 
+    - It is the place, where execution contexts get stacked on top of each other to keep track of where we are in the execution. 
+    - Call Stack ensures that the order of execution never gets lost 
+*/
