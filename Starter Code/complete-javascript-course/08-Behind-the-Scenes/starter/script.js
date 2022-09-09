@@ -249,3 +249,35 @@ calcAge(1991);
 
   Indeed, the parent scope of the calcAge function is the global scope. And since the firstName variable is there, JavaScript could then use that. 
 */
+
+/*
+    Variable Environment : Hoisting and the TDZ (Temporal Dead Zone)
+
+    Hoisting : Makes some types of variables accessible / usable in the code before they are actually declared. "Variables lifted to the top of their scope".
+
+    Behind the Scenes
+    - Before execution, code is scanned for variable declarations, and for each variable, a new property is created in the variable environment object.
+
+                                          HOISTED?              INITIAL VALUE             SCOPE
+      function declarations                YES                 Actual Function            Block
+      var variables                        YES                    undefined              Function
+      let and const variables              NO                 <uninitialized>, TDZ        Block
+      function expressions and arrows               Depends if using var or let/const
+
+    Table Explanation :
+    - We can use function declarations before they are declared in the code, because they are stored in the Variable Environment object even before the code starts executing. 
+    - So unlike functions, when we try to access a var variable before it's declared in a code, we don't get the declared value but we get undefined. This is one of the common sources of bugs, that is why in modern JavaScript we almost never use var. 
+    - let and const variables are not hoisted. Technically, they are hoisted but their value is basically set to uninitialized, so there is no value to work with at all. So in practice, it is as if hoisting was not happening at all. Instead, we say these variables are placed in a so-called Temporal Dead Zone (TDZ) which makes it so that we can't access the variables between the beginning of the scope and to place where the variables are declared. Let and const are block scoped.  
+    - As for function expressions and arrow functions it depends if they were created using var or let/const variables because these functions are simply variables and so they behave the exact same way. 
+
+    Temporal Dead Zone - It's basically the region of the scope in which the variable is defined, but can't be used in any way. So it is, as if the variable didn't even exist. 
+
+    Why TDZ?
+    - Makes it easier to avoid and catch errors: accessing variables before declarations is bad practice and should be avoided
+    - Makes const variables work the way they are supposed to. 
+
+    Why Hoisting?
+    - Using functions before actual declaration 
+      - Because this is essential for some programming techniques, such as mutual recursion. Some people also think it makes the code a lot more readable. 
+    - var hoisting is just a byproduct
+*/
