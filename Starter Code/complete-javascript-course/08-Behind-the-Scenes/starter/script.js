@@ -201,3 +201,51 @@
     - The scope chain in a certain scope is equal to adding together all the variable environments of all the parent scopes
     - The scope chain has nothing to do with the order in which functions were called. It does not affect the scope chain at all!
 */
+
+/* Scoping in Practice */
+function calcAge (birthYear) {
+  const age = 2037 - birthYear;
+  //console.log(firstName);
+  //console.log(lastName); //Output : Reference Error
+
+  function printAge () {
+    let output = `${firstName} is ${age}, born in ${birthYear}`;
+    console.log(output);
+
+    if(birthYear >= 1981 && birthYear <= 1996){
+      var millenial = true;
+      // Creating NEW variable with same name as outer scope's variable 
+      const firstName = 'Steven'; // The below str variable would use the value 'Steven' because JavaScript tries to look for the variable name in the current scope. So therefore JavaScript will use that variable and not perform any variable lookup in the scope chain. 
+
+      // Reassigning outer scope's variable
+      output = 'NEW OUTPUT!';
+      const str =  `Oh, and you're a millenial, ${firstName}`;
+      console.log(str);
+
+      function add (a, b) {
+        return a + b;
+      }
+    }
+    
+    //console.log(str); // Output : Reference Error (due to block scope of if condition)
+    console.log(millenial); // Output : true (variables declared with var keyword are function scoped. So they simply ignore the block, because they are not block-scoped at all. They are just function scoped)
+    //console.log(add(2, 3)); // Output : Reference Error (the scope of the add () function is only the block in which it was defined. So this proves that functions are block scoped. IMP : But it is only block scoped until the strict mode is on)
+    console.log(output); // Output : NEW OUTPUT! (Since we simply reassigned the value of the output variable without creating a new variable. It is because we manipulated an existing variable inside of a child scope)
+  }
+  
+  printAge();
+
+  return age;
+}
+
+const firstName = 'Jonas';
+calcAge(1991);
+//console.log(age) // Output : Reference Error
+
+/*
+  Jonas was printed to the console which is the firstName variable.
+
+  So when the console.log(firstName) line had been executed, JavaScript did not find this variable in the function scope. And so it did a variable lookup in the scope chain to find the variable. 
+
+  Indeed, the parent scope of the calcAge function is the global scope. And since the firstName variable is there, JavaScript could then use that. 
+*/
