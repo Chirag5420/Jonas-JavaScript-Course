@@ -281,3 +281,61 @@ calcAge(1991);
       - Because this is essential for some programming techniques, such as mutual recursion. Some people also think it makes the code a lot more readable. 
     - var hoisting is just a byproduct
 */
+
+// Hoisting and TDZ in Practice
+
+// Variables
+console.log(me); // OUTPUT : undefined --> Variables declared with var are hoisted, but they are hoisted to the value of undefined. So therefore when we try to access them, undefined is exactly the result that we get
+
+// console.log(job); //OUTPUT : Cannot access 'job' before initialization. The origin of this error, is because the it is still in the Temporal Dead Zone (TDZ). 
+// console.log(year); //OUTPUT : Cannot access 'year' before initialization. 
+
+var me = 'Jonas';
+let job = 'teacher';
+const year = 1991; 
+
+// Functions
+console.log(addDecl(2, 3)); //OUTPUT : 5
+// console.log(addExpr(2, 3)); //OUTPUT : Cannot access 'addExpr' before initialization. 
+// console.log(addArrow(2, 3));
+// console.log(addExprVar(2, 3)); //OUTPUT : addExprVar is not a function. As the function is of type 'var', we get 'undefined' which leads to producing the error not a function. 
+
+function addDecl(a, b){
+  return a + b;
+}
+
+const addExpr = function (a, b){
+  return a + b;
+}
+
+const addArrow = (a, b) => a + b;
+
+var addExprVar = function (a, b) {
+  return a + b;
+}
+
+// Example to explain pitfall of Hoisting 
+console.log(numProducts); // OUTPUT: undefined
+if(!numProducts) deleteShoppingCart(); // OUTPUT : All products deleted! - Since we declared numProducts of var type, it got hoisted and assigned the value undefined. Now as undefined is also a falsey value, the function deleteShoppingCart gets invoked 
+
+var numProducts = 10;
+function deleteShoppingCart() {
+  console.log('All products deleted!');
+}
+
+/*
+    Some Best Practices
+    - Don't use var to declare variables. Use const most of the time to declare variables, and let if you really need to change the variable later.
+    - In order to write clean code, you should declare your variables at the top of each scope 
+    - Declare all the functions first, and use them only after the declaration.  
+*/
+
+var x = 1;
+let y = 2;
+const z = 3;
+
+// Variables decalred using let or const do not create properties on the window object. 
+
+console.log(x === window.x); // OUTPUT : true
+console.log(y === window.y); // OUTPUT : false
+console.log(z === window.z); // OUTPUT : false
