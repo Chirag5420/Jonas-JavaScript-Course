@@ -363,3 +363,40 @@ console.log(z === window.z); // OUTPUT : false
   
     - this does NOT point to the function itself, and also NOT to its variable environment!
 */
+
+// The this Keyword in Practice 
+// console.log(this); //this keyword in the global scope is simply the window object 
+
+const calcAgeExpr = function(birthYear){
+  console.log(2037 - birthYear);
+  // console.log(this); // OUTPUT : undefined --> This is because we are in strict mode. In sloppy mode, it would be also the global window object. 
+}
+
+calcAgeExpr(1991);
+
+const calcAgeArrow = (birthYear) => {
+  console.log(2037 - birthYear);
+  // console.log(this); // OUTPUT : window object --> This is because arrow function does not get its own this keyword. So instead, arrow function simply uses the lexical this keyword, which means it uses the this keyword of its parent function or its parent scope. 
+}
+
+calcAgeArrow(1980);
+
+const jonas = {
+  year: 1991,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+  }
+};
+jonas.calcAge(); // OUTPUT : jonas object --> So when we have a method call, the this keyword inside of the object will be the object that is calling the method 
+
+const matilda = {
+  year: 2017
+}
+
+matilda.calcAge = jonas.calcAge; //this is called method borrowing 
+matilda.calcAge();
+
+const f = jonas.calcAge;
+f(); // OUTPUT : undefined, typeError : undefined is not an object (evaluating 'this.year')
+// This happens because the f() function is now just a regular function call and not attached to any object. Therefore, the this keyword is undefined. 
