@@ -339,3 +339,27 @@ const z = 3;
 console.log(x === window.x); // OUTPUT : true
 console.log(y === window.y); // OUTPUT : false
 console.log(z === window.z); // OUTPUT : false
+
+/*
+    The this keyword
+
+    - this keyword / variable: Special variable that is created for every execution context (every function). Takes the value of (points to) the "owner" of the function in which the this keyword is used. 
+    - this is NOT static. It depends on how the function is called, and its value is only assigned when the function is actually called. 
+    
+    Four different ways in which functions can be called
+    - Method (As a function attached to an object)
+      - this = <Object that is calling the method>
+      - So when we call a method, the this keyword inside that method will simply point to the object on which the method is called. In other words, it points to the object calling the method. 
+    - Simple function call 
+      - this = undefined
+      - Another way to call functions is by simply calling them as normal functions. So not as a method and so not attached to any object. 
+      - In this case, the this keyword will simply be undefined (this is only valid for strict mode!)
+      - Otherwise (not in strict mode!) it would point to the global window object and that can be very problematic. Another good reason, to use strict. 
+    - Arrow functions 
+      - this = <this of surrounding function (lexical this)>
+    - Event listener
+      - this = <DOM element that the handler is attached to>
+    - new, call, apply, bind (other ways to call functions)
+  
+    - this does NOT point to the function itself, and also NOT to its variable environment!
+*/
