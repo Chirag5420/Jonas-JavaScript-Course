@@ -304,11 +304,11 @@ function addDecl(a, b){
   return a + b;
 }
 
-const addExpr = function (a, b){
-  return a + b;
-}
+// const addExpr = function (a, b){
+//   return a + b;
+// }
 
-const addArrow = (a, b) => a + b;
+// const addArrow = (a, b) => a + b;
 
 var addExprVar = function (a, b) {
   return a + b;
@@ -363,7 +363,7 @@ console.log(z === window.z); // OUTPUT : false
   
     - this does NOT point to the function itself, and also NOT to its variable environment!
 */
-
+/*
 // The this Keyword in Practice 
 // console.log(this); //this keyword in the global scope is simply the window object 
 
@@ -400,3 +400,55 @@ matilda.calcAge();
 const f = jonas.calcAge;
 f(); // OUTPUT : undefined, typeError : undefined is not an object (evaluating 'this.year')
 // This happens because the f() function is now just a regular function call and not attached to any object. Therefore, the this keyword is undefined. 
+*/
+
+// Regular Functions vs. Arrow Functions 
+//var firstName = 'Matilda'; //If we declare the var variable here it would then add a property named firstName to the global window object. 
+
+const jonas = {
+  firstName: 'Jonas',
+  year: 1991,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+
+    // SOLUTION 1
+    // const self = this; // A solution that would be used pre ES6. 
+    // const isMillenial = function () {
+    //   console.log(self);
+    //   console.log(self.year >= 1981 && self.year <= 1996);
+    //   // console.log(this.year >= 1981 && this.year <= 1996); // OUTPUT : TypeError -> Even though we are making a function call inside of a method, but since functions do not have this keyword we get the TypeError. So a regular function call has this keyword set to undefined. 
+    // }
+
+    // SOLUTION 2 --> Arrow Function (Since arrow function uses the this keyword from its parent scope. And since in this case, in the parent scope the this keyword is pointing to Jonas object)
+    const isMillenial = () => {
+      console.log(this);
+      console.log(this.year >= 1981 && this.year <= 1996);
+      // console.log(this.year >= 1981 && this.year <= 1996); // OUTPUT : TypeError -> Even though we are making a function call inside of a method, but since functions do not have this keyword we get the TypeError. So a regular function call has this keyword set to undefined. 
+    }
+
+    isMillenial();
+  },
+
+  greet: () => console.log(`Hey ${this.firstName}`),
+};
+jonas.greet(); // OUTPUT : Hey undefined
+// We get the above output because of the fact that arrow function does not get its own this keyword, it will simply use the this keyword from its surroundings. So in other words, parents' this keyword. And the parent scope of this greet method is global scope. 
+
+console.log(this.firstName); // OUTPUT : undefined --> When we try to access a property that does not exist on a certain object, we do not get an error but simply undefined because it tries to fetch the propertyl from the global window object. 
+
+console.log(jonas.calcAge());
+
+//arguments keyword 
+const addExpr = function (a, b){
+  console.log(arguments);
+  return a + b;
+}
+addExpr(2, 5);
+addExpr(2, 5, 8, 12);
+
+const addArrow = (a, b) => {
+  //console.log(arguments); // OUTPUT : Reference Error -> arguments is not defined. So arguments keyword is only declared in regular functions (function declarations and function expressions)
+  return a + b;
+} 
+addArrow(2, 5);
