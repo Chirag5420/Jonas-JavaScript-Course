@@ -26,4 +26,55 @@ const restaurant = {
       close: 24,
     },
   },
+
+  order: function(starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  }
 };
+
+const arr = [2, 3, 4];
+const a = arr[0];
+const b = arr[1];
+const c = arr[2];
+
+// Destructuring an array 
+const [x, y, z] = arr; // Destructuring assignment
+console.log(x, y, z);
+console.log(arr); // original array is not destroyed
+
+const [first, second] = restaurant.categories;
+console.log(first, second); // OUTPUT : Italian Pizzeria 
+
+// Now if we want to take the first and third element, we can leave a hole in the destructuring operator
+
+const [firstCat, , thirdCat] = restaurant.categories;
+console.log(firstCat, thirdCat); // OUTPUT : Italian Vegetarian
+
+// Switching elements
+let [main, , secondary] = restaurant.categories;
+console.log(main, secondary);
+
+// const temp = main;
+// main = secondary;
+// secondary = temp;
+// console.log(main, secondary);
+
+// Switching elements using Destructuring 
+[main, secondary] = [secondary, main];
+console.log(main, secondary);
+
+// Receive two return values from a function 
+const [starter, mainCourse] = restaurant.order(2, 0);
+console.log(starter, mainCourse);
+
+// Nested Destructuring 
+const nested = [2, 4, [5, 6]];
+// const [i, , j] = nested;
+// console.log(i, j); 
+
+const [i, , [j, k]] = nested;
+console.log(i, j, k);
+
+// Default Values
+const [p=1, q=1, r=1] = [8, 9];
+console.log(p, q, r);
