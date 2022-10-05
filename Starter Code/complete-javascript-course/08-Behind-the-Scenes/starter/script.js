@@ -486,3 +486,56 @@ console.log('Myself:', myself); // Age : 27 (The age gets modified for the mysel
 // Now when we create a new object, 'friend' the friend identifier will point to the exact same memory address as the me identifier. And again that address (0003) contains the reference (D30F), which then points to the objects itself. When we execute the line friend.age = 27, so what happens is that the object is found in the heap, and the 30 is changed to 27. 
 
 // All variables declared const are immutable is actually an incorrect statement as it is only valid for primitive types. As for reference types, we are still able to modify the values because we are not changing the value (i.e., heap memory address D30F) to which the call stack memory is pointing. We are changing the value in the heap memory.
+
+// Primitive Types
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+
+console.log(lastName, oldLastName); // OUTPUT : Davis Williams
+
+// Reference Types
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+}
+
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('Before marriage:', jessica);
+console.log('After marriage:', marriedJessica);
+
+// Copying objects
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+}
+
+// Object.assign() function essentially merges two objects and then return a new one. So in the below exmple, we would copy the jessica2 object into an empty object and this will then create a completely new object where all the properties are really copied.
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = 'Davis'; 
+
+console.log('Before marriage:', jessica2);
+console.log('After marriage:', jessicaCopy);
+
+// In the above example, a new object was created in the heap and 'jessicaCopy' is pointing to that object. So it has a reference to that new object. However, there is still a problem because using this technique of Object.assign() only works on the first level. So in other words, if we have an object inside an object, the inner object will still be the same so it will still point to the same place in memory. And that's why we say, the Object.assign() only creates a shallow copy and not a deep clone which is what we would like to have. 
+// So again, a shallow copy will only copy the properties in the first level, while a deep clone would copy everything. 
+
+// An example to illustrate shallow copy
+const jessica3 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'],
+}
+
+const jessicaCopy2 = Object.assign({}, jessica3);
+jessicaCopy2.family.push('Mary');
+jessicaCopy2.family.push('John');
+
+console.log(jessica3);
+console.log(jessicaCopy2);
+
+// So now both the objects are having four family members due to the shallow copy of Object.assign() method. 
