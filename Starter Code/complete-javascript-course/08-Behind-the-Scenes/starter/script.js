@@ -452,3 +452,37 @@ const addArrow = (a, b) => {
   return a + b;
 } 
 addArrow(2, 5);
+
+// Primitives vs. Objects 
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age);
+console.log(oldAge);
+
+const myself = {
+  name: 'Jonas',
+  age: 30,
+};
+
+const friend = myself; 
+friend.age = 27;
+console.log('Friend:', friend); // Age : 27
+console.log('Myself:', myself); // Age : 27 (The age gets modified for the myself object as well)
+
+// Primitive Data Types (Primitive Types) --> Number, String, Boolean, Undefined, Null, Symbol, Bigint
+// Objects (Reference Types) --> Object literal, Arrays, Functions, Many more 
+
+// So JS Engine has two components : Call Stack and Heap. 
+// All of the objects, or in other word reference types are stored in memory heap. In the other hand, primitive or primitive types are stored in the call stack. So primitive types are stored in the execution contexts in which they are declared. 
+
+// In the first example, what Javascript does behind the scenes is that it would first create a so-called unique identifier with the variable name. Then a piece of memory will be allocated with a certain address (for example, 0001). And finally the value would be stored in memory at the specified address. NOTE : It happens in call stack where primitive values are stored. The identifier points to the address and not the value itself. So the age is equal to the memory address 0001 which holds the value 30. 
+// Now when we did oldAge = age, it would point to the same memory address 0001 as the age variable. But when we do age = 31, a new piece of memory is allocated and the age identifier simply points to the new address (0002), which is holding the value 31. 
+
+// In the second example, when a new object is created such as the myself object, it is stored in the heap. And such as before, there is a memory address (D30F) and then the value itself. Now in the case of reference values such as the myself object, the myself identifier does not actually point directly to this new created memory address in the heap. Instead, it points to a new piece of memory (0003) that's created in the stack. And this new piece of memory (0003) will then point to the object that's in the heap by using the memory address (D30F) as its value. 
+
+// In other words, the piece of memory in the call stack has a reference to the piece of memory in the heap, which holds the myself object. And that is the reason we call objects reference types in this context. And it works this way, because objects might be too large to be stored in the stack. Instead they are stored in the heap, which is almost like an unlimited memory pool. And the stack just keeps a reference to where the object is actually stored in the heap so it can find it whenever necessary. 
+
+// Now when we create a new object, 'friend' the friend identifier will point to the exact same memory address as the me identifier. And again that address (0003) contains the reference (D30F), which then points to the objects itself. When we execute the line friend.age = 27, so what happens is that the object is found in the heap, and the 30 is changed to 27. 
+
+// All variables declared const are immutable is actually an incorrect statement as it is only valid for primitive types. As for reference types, we are still able to modify the values because we are not changing the value (i.e., heap memory address D30F) to which the call stack memory is pointing. We are changing the value in the heap memory.
