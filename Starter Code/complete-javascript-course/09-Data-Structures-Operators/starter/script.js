@@ -33,8 +33,72 @@ const restaurant = {
 
   orderDelivery: function({starterIndex = 1, mainIndex = 0, time = '20:00', address}) {
     console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
+  },
+
+  orderPasta: function(ing1, ing2, ing3){
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
   }
 };
+
+// The Spread Operator (...)
+const arr = [7, 8, 9];
+
+// Ways to add elements in the beginning 
+// arr.unshift(1, 2);
+// const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+// console.log(badNewArr);
+
+const newArr = [1, 2, ...arr];
+console.log(newArr); // OUTPUT : [1, 2, 7, 8, 9]
+console.log(...newArr); // OUTPUT : 1 2 7 8 9
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+/*
+  NOTE : Difference between Spread Operator and Destructuring 
+
+  Spread Operator -> Spread Operator takes all the elements from the array and it does not create new variables. As a consequence, we can only use it in places where we would otherwise write values separated by commas.
+*/
+
+// Spread Operator Use 1 : Create shallow copy of arrays
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// Spread Operator Use 2 : Merge two arrays together 
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu);
+
+// Iterables : arrays, strings, maps, sets. NOT objects.
+const str = 'Jonas';
+const letters = [...str, ' ', 'S.'];
+console.log(letters);
+console.log(...str); // J o n a s
+//console.log(`${...str} Schmedtmann`); OUTPUT: SyntaxError 
+
+// Real-world example 
+const ingredients = [
+  // prompt('Let\'s make pasta! Ingredient 1?'), 
+  // prompt('Ingredient 2?'), 
+  // prompt('Ingredient 3?')
+];
+console.log(ingredients);
+
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+
+// Better solution
+restaurant.orderPasta(...ingredients);
+
+// Objects
+const newRestaurant = {foundedIn: 1998, ...restaurant, founder: 'Guiseppe'};
+console.log(newRestaurant);
+
+const restaurantCopy = {...restaurant};
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
+/*
+/////////////////////////////////
+// Destructuring Objects
 
 restaurant.orderDelivery({
   time: '22:30',
@@ -48,7 +112,6 @@ restaurant.orderDelivery({
   starterIndex: 1
 });
 
-// Destructuring Objects
 // We need to write the exact property names as mentioned in the object in order to retrieve the values. The order of elements does not matter, so we do not need to manually skip as we had done for arrays. 
 const {name, categories, openingHours} = restaurant;
 console.log(name, categories, openingHours);
@@ -79,6 +142,8 @@ console.log(a, b);
 // Nested objects
 const {fri: {open: o, close: c}} = openingHours;
 console.log(o, c);
+*/
+
 /*
 /////////////////////////////////
 // Destructuring Arrays
