@@ -45,6 +45,58 @@ const restaurant = {
   }
 };
 
+// Short Circuiting (&& and ||)
+
+/*
+  Three Properties about Logical Operators :
+  - Use ANY data type
+  - Return ANY data type
+  - Short-Circuiting 
+*/
+
+console.log('---- OR ----');
+// Short Circuiting with OR (||) operator
+// In the case of OR operator, short circuiting means that if the first operand is a truthy value, it will immediately return that first value and not evaluate the second operand.  
+console.log(3 || 'Jonas'); // OUTPUT : 3
+console.log('' || 'Jonas'); // OUTPUT : Jonas (Since '' is a falsy value)
+console.log(true || 0); // OUTPUT : true (Since true is a truthy value)
+console.log(undefined || null); // OUTPUT : null (Since undefined is a falsy value, the second operand null is returned even though null is also a falsy value. So there is no short-circuiting)
+console.log(undefined || 0 || '' || 'Hello' || 23 || null); // OUTPUT : Hello (Since it is the first truthy value in this chain of OR operations)
+
+//restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1); // OUTPUT : 10 (Since restaurant.numGuests does not exist so as it is undefined and so therefore 10 is the result)
+// OUTPUT : 23 (But if we set the restaurant.numGuests to 23 before then the output would be 23)
+
+// Above Example with Short-Circuiting 
+const guests2 = restaurant.numGuests || 10; // OUTPUT : 10 (If we hadn't set the restaurant.numGuests before we would get undefined. Since undefined is a falsy value, we get the output as 10)
+console.log(guests2); 
+
+console.log('---- AND ----');
+// Short Circuiting with AND (&&) operator
+console.log(0 && 'Jonas'); // OUTPUT : 0 (AND operator short circuits when the first value is falsy and then immediately returns that falsy value without even evaluating the second operand)
+console.log(7 && 'Jonas'); // OUTPUT : Jonas (So when it is truthy, the evaluation continues and then simply the last value is returned)
+console.log('Hello' && 23 && null && 'Jonas'); // OUTPUT : null (Since null is a falsy value and therefore the evaluation no longer continues and it short circuits the rest of the evaluation)
+
+if(restaurant.orderPizza){
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+
+// With AND (&&) operator
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+/*
+  SUMMARIZE :
+  - The OR (||) operator would return the first truthy value of all the operands or simply the last value if all of them are falsy
+  - The AND (&&) operator would return the first falsy value or the last value if all of them are truthy
+
+  As for practical applications :
+  - We can use the OR operator to set default values
+  - We can use the AND operator to execute code in the second operand
+*/
+
+/*
+/////////////////////////////////
 // Rest Pattern and Parameters
 // Rest Pattern looks exactly like the spread operator. However, it does the opposite of what spread operator does. It is used to collect multiple elements and condense them into an array. So the spread operator is used to unpack an array while the rest is to pack elements into an array. 
 
@@ -84,6 +136,8 @@ const x = [23, 5, 7];
 add(...x); // We unpacked the values at this line which is then condensed back into the array due to the REST syntax in the parameter list of add () function 
 
 restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+*/
+
 /*
 /////////////////////////////////
 // The Spread Operator (...)
