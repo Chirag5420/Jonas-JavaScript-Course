@@ -37,9 +37,55 @@ const restaurant = {
 
   orderPasta: function(ing1, ing2, ing3){
     console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
+  },
+
+  orderPizza: function(mainIngredient, ...otherIngredients){
+    console.log(mainIngredient);
+    console.log(otherIngredients);
   }
 };
 
+// Rest Pattern and Parameters
+// Rest Pattern looks exactly like the spread operator. However, it does the opposite of what spread operator does. It is used to collect multiple elements and condense them into an array. So the spread operator is used to unpack an array while the rest is to pack elements into an array. 
+
+// 1) Destructuring
+
+// SPREAD, because on RIGHT side of =
+const arr = [1, 2, ...[3, 4]];
+console.log(arr);
+
+// REST, because on LEFT side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5]; // REST pattern basically collects the elements that are unused in the destructuring assignment 
+console.log(a, b, others); // OUTPUT : 1 2 [3, 4, 5]
+
+// NOTE : REST element must always be at the last because otherwise it wouldn't know from where to collect until where 
+const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(pizza, risotto, otherFood); 
+
+// Objects
+const {sat, ...weekdays} = restaurant.openingHours;
+console.log(weekdays);
+
+// 2) Functions 
+const add = function(...numbers) {
+  let sum = 0;
+  for(let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log(sum);
+  //console.log(numbers);
+}
+
+add(2, 3);
+add(5, 3, 7, 2);
+add(8, 2, 5, 3, 2, 1, 4);
+
+const x = [23, 5, 7];
+add(...x); // We unpacked the values at this line which is then condensed back into the array due to the REST syntax in the parameter list of add () function 
+
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+/*
+/////////////////////////////////
 // The Spread Operator (...)
 const arr = [7, 8, 9];
 
@@ -59,7 +105,6 @@ console.log(newMenu);
   NOTE : Difference between Spread Operator and Destructuring 
 
   Spread Operator -> Spread Operator takes all the elements from the array and it does not create new variables. As a consequence, we can only use it in places where we would otherwise write values separated by commas.
-*/
 
 // Spread Operator Use 1 : Create shallow copy of arrays
 const mainMenuCopy = [...restaurant.mainMenu];
@@ -96,6 +141,8 @@ const restaurantCopy = {...restaurant};
 restaurantCopy.name = 'Ristorante Roma';
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
+*/
+
 /*
 /////////////////////////////////
 // Destructuring Objects
