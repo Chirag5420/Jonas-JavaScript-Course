@@ -95,6 +95,17 @@ restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
   - We can use the AND operator to execute code in the second operand
 */
 
+// THe Nullish Coalescing Operator (??)
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+
+// Nullish: null and undefined (NOT 0 or '')
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect); // OUTPUT : 0
+
+// Now we are getting the correct output which is 0, because the idea behind the Nullish Coalescing Operator (??) is of checking for Nullish values instead of Falsy values. 
+
 /*
 /////////////////////////////////
 // Rest Pattern and Parameters
