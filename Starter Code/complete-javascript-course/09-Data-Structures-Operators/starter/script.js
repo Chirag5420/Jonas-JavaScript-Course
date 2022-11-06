@@ -45,6 +45,36 @@ const restaurant = {
   }
 };
 
+// Logical Assignment Operators 
+const rest1 = {
+  name: 'Capri',
+  //numGuests:20,
+  numGuests: 0,
+}
+
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi'
+}
+
+// OR assignment operator 
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+
+// nullish assignment operator (null or undefined)
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+// AND assignment operator (So basically the logical AND operator assigns a value to the variable only if it is currently truthy. So since rest1.owner doesn't exist it didn't do anything, whereas since rest2.owner exists it replaces it with the '<ANONYMOUS>' string)
+rest1.owner &&= '<ANONYMOUS>'; 
+rest2.owner &&= '<ANONYMOUS>';
+
+console.log(rest1);
+console.log(rest2);
+/*
+///////////////////////////////
 // Short Circuiting (&& and ||)
 
 /*
@@ -54,6 +84,7 @@ const restaurant = {
   - Short-Circuiting 
 */
 
+/*
 console.log('---- OR ----');
 // Short Circuiting with OR (||) operator
 // In the case of OR operator, short circuiting means that if the first operand is a truthy value, it will immediately return that first value and not evaluate the second operand.  
@@ -84,6 +115,7 @@ if(restaurant.orderPizza){
 
 // With AND (&&) operator
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+*/
 
 /*
   SUMMARIZE :
@@ -95,7 +127,9 @@ restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
   - We can use the AND operator to execute code in the second operand
 */
 
-// THe Nullish Coalescing Operator (??)
+/*
+//////////////////////////////////////
+// The Nullish Coalescing Operator (??)
 restaurant.numGuests = 0;
 const guests = restaurant.numGuests || 10;
 console.log(guests);
@@ -105,6 +139,8 @@ const guestCorrect = restaurant.numGuests ?? 10;
 console.log(guestCorrect); // OUTPUT : 0
 
 // Now we are getting the correct output which is 0, because the idea behind the Nullish Coalescing Operator (??) is of checking for Nullish values instead of Falsy values. 
+
+*/
 
 /*
 /////////////////////////////////
