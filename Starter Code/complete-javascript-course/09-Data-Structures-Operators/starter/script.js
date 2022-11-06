@@ -45,6 +45,22 @@ const restaurant = {
   }
 };
 
+// Looping Arrays: The for-of loop
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for(const item of menu) console.log(item);
+
+for(const item of menu.entries()) {
+  console.log(`${item[0] + 1}: ${item[1]}`); // OUTPUT : 1: Foccacia (because item.entries() returns a key-value pair)
+}
+
+for(const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`); // OUTPUT : 1: Foccacia (because item.entries() returns a key-value pair)
+}
+
+console.log([...menu.entries()]);
+/*
+///////////////////////////////
 // Logical Assignment Operators 
 const rest1 = {
   name: 'Capri',
@@ -73,6 +89,8 @@ rest2.owner &&= '<ANONYMOUS>';
 
 console.log(rest1);
 console.log(rest2);
+*/
+
 /*
 ///////////////////////////////
 // Short Circuiting (&& and ||)
