@@ -53,6 +53,39 @@ const restaurant = {
   }
 };
 
+// Sets 
+const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto', 'Pasta', 'Pizza']);
+console.log(ordersSet);
+
+// Strings are also iterable
+console.log(new Set('Jonas')); // OUTPUT : Set(5) {'J', 'o', 'n', 'a', 's'}
+
+console.log(ordersSet.size); // OUTPUT : 3
+console.log(ordersSet.has('Pizza')); // OUTPUT : true
+console.log(ordersSet.has('Bread')); // OUTPUT : false
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread'); 
+ordersSet.delete('Risotto');
+//ordersSet.clear();
+console.log(ordersSet);
+
+for(const order of ordersSet){
+  console.log(order);
+}
+
+// Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = new Set(staff);
+console.log(staffUnique);
+
+const staffArray = [...staffUnique];
+console.log(staffArray);
+
+console.log(staffUnique.size);
+
+console.log(new Set('jonasschmedtmann').size);
+/*
+////////////////////////////////////////////////////
 // Looping Objects: Object Keys, Values, and Entries 
 // Property NAMES
 const properties = Object.keys(openingHours);
@@ -79,6 +112,7 @@ for(const [key, {open, close}] of entries){
 }
 
 //console.log(restaurant);
+*/
 
 /*
 /////////////////////////
