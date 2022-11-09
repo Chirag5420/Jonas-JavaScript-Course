@@ -53,6 +53,39 @@ const restaurant = {
   }
 };
 
+// Maps: Fundamentals
+// A map is a data structure that can be used to map values to keys. So just like an object, data is stored in key-value pairs in maps. Now, the big difference between object and maps, is that in maps the keys can have any type. So in objects, the keys are always strings. But in map, we can have any type of key. 
+
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+rest.set(2, 'Lisbon, Portugal');
+rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+.set('open', 11)
+.set('close', 23)
+.set(true, 'We are open :D')
+.set(false, 'We are closed :(');
+
+console.log(rest);
+console.log(rest.get(true));
+console.log(rest.get(1));
+
+const time = 21;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+console.log(rest.has('categories')); // OUTPUT : true
+rest.delete(2);
+//rest.clear();
+
+const arr = [1, 2];
+rest.set(arr, 'Test');
+rest.set(document.querySelector('h1'), 'Heading');
+console.log(rest);
+console.log(rest.size); // OUTPUT : 9
+
+console.log(rest.get(arr));
+/*
+//////////////////////////////
 // Sets 
 const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto', 'Pasta', 'Pizza']);
 console.log(ordersSet);
@@ -84,6 +117,7 @@ console.log(staffArray);
 console.log(staffUnique.size);
 
 console.log(new Set('jonasschmedtmann').size);
+*/
 /*
 ////////////////////////////////////////////////////
 // Looping Objects: Object Keys, Values, and Entries 
