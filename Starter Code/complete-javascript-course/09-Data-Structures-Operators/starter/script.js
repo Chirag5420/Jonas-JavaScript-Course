@@ -53,6 +53,82 @@ const restaurant = {
   }
 };
 
+// Summary: Which Data Structure to Use?
+/*
+  Sources of Data:
+  - From the program itself: Data written directly in source code (e.g. status messages)
+  - From the UI: Data input from the user or data written in DOM (e.g. tasks in todo app)
+  - From external sources: Data fetched for example from web API (e.g. recipe objects)
+
+  API stands for Application Programming Interface and we can use a Web API to get data from other web
+  applications. For example, we can use web API to get the current weather in any city or data about movies or currency conversion rates and almost every kind of data we can imagine. 
+
+  Data comes in as a Collection of data which is stored in Data Structure. There are four built-in data structures in JavaScript:
+  - Array / Set : If we want a simple list of values
+  - Object / Map : If we want key-value pairs 
+
+  Data from Web API usually comes in a special data format called JSON.
+
+  Other Built-In:
+  - WeakMap
+  - WeakSet
+
+  Non-Built In:
+  - Stacks
+  - Queues
+  - Linked Lists
+  - Trees
+  - Hash Tables
+
+  Arrays vs. Sets
+  --------------------------------
+  Array:
+  tasks = ['Code', 'Eat', 'Code'];
+  // ["Code", "Eat", "Code"]
+
+  - Use when you need ordered list of values (might contain duplicates)
+  - Use when you need to manipulate data
+
+  Set:
+  tasks = new Set(['Code', 'Eat', 'Code']);
+  // {"Code", "Eat"}
+  
+  - Use when you need to work with unique values
+  - Use when high-performance is really important 
+  - Use to remove duplicates from arrays 
+
+  Objects vs. Maps
+  -------------------------------
+  Objects:
+  task = {
+    task: 'Code',
+    date: 'today',
+    repeat: true
+  };
+
+  - More traditional key/value store ("abused" objects)
+  - Easier to write and access values with . and []
+
+  - Use when you need to include functions (methods)
+  - Use when working with JSON (can convert to map)
+
+  Maps:
+  task = new Map([
+    ['task', 'Code'],
+    ['date', 'today'],
+    [false, 'Start coding!']
+  ]);
+
+  - Better performance
+  - Keys can have any data type
+  - Easy to iterate
+  - Easy to compute size
+
+  - Use when you simply need to map key to values
+  - Use when you need keys that are not strings 
+*/
+/*
+//////////////////////////////
 //Maps: Iteration
 const question = new Map([
   ['question', 'What is the best programming language in the world?'],
@@ -90,6 +166,7 @@ if(answer === question.get('correct')){
 console.log([...question]);
 console.log([...question.keys()]);
 console.log([...question.values()]);
+*/
 
 /*
 ///////////////////////////////
