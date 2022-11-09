@@ -53,6 +53,46 @@ const restaurant = {
   }
 };
 
+//Maps: Iteration
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct 🎉'],
+  [false, 'Try again!']
+]);
+
+console.log(question);
+
+// Convert objects to maps
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+
+console.log(question.get('question'));
+for(const [key, value] of question){
+  if(typeof(key) === 'number') {
+    console.log(`Answer ${key}: ${value}`);
+  }
+}
+//const answer = Number(prompt('Your answer'));
+const answer = 3;
+console.log(answer);
+
+if(answer === question.get('correct')){
+  console.log(question.get(true));
+} else {
+  console.log(question.get(false));
+}
+
+// Convert Map to Array
+console.log([...question]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
+
+/*
+///////////////////////////////
 // Maps: Fundamentals
 // A map is a data structure that can be used to map values to keys. So just like an object, data is stored in key-value pairs in maps. Now, the big difference between object and maps, is that in maps the keys can have any type. So in objects, the keys are always strings. But in map, we can have any type of key. 
 
@@ -84,6 +124,7 @@ console.log(rest);
 console.log(rest.size); // OUTPUT : 9
 
 console.log(rest.get(arr));
+*/
 /*
 //////////////////////////////
 // Sets 
