@@ -4,6 +4,15 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
+// String Methods Practice
+const flightsArray = flights.split('+');
+console.log(flightsArray);
+
+for(const flight of flightsArray){
+  const [type, from, to, time] = flight.split(';');
+  const output = `${type.startsWith('_Delayed') ? '🔴' : ''} ${type.replaceAll('_',' ')} from ${from.slice(0,3).toUpperCase()} to ${to.slice(0,3).toUpperCase()} (${time.replace(':','h')})`.padStart(36);
+  console.log(output);
+}
 // Enhanced Object Literals
 
 // Third Enhancement : We can now even compute property names. So for example, now instead of writing 'thu', we used weekdays[3]
@@ -53,6 +62,8 @@ const restaurant = {
   }
 };
 
+/*
+////////////////////////////////
 // Working With Strings - Part 3
 // Split and Join
 console.log('a+very+nice+string'.split('+'));
@@ -102,6 +113,8 @@ const planesInLine = function(n){
 planesInLine(5);
 planesInLine(3);
 planesInLine(12);
+*/
+
 /*
 //////////////////////////////////
 // Working With Strings - Part 2
