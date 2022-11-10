@@ -53,6 +53,46 @@ const restaurant = {
   }
 };
 
+// Working With Strings - Part 1 
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]); // OUTPUT: A
+console.log(plane[1]); // OUTPUT: 3
+console.log(plane[2]); // OUTPUT: 2
+console.log('B737'[0]); // OUTPUT: B
+
+console.log(airline.length);
+console.log('B737'.length);
+
+console.log(airline.indexOf('r')); // OUTPUT: 6
+console.log(airline.lastIndexOf('r')); // OUTPUT: 10
+console.log(airline.indexOf('Portugal')); // OUTPUT: 8
+
+console.log(airline.slice(4)); // OUTPUT: Air Portugal (position at which the extraction will start)
+console.log(airline.slice(4, 7)); // OUTPUT: Air (it stops extracting before reaching index 7. Besides the length of the extracted string is always the end - begin, so 7 - 4 = 3)
+
+console.log(airline.slice(0, airline.indexOf(' '))); // OUTPUT: TAP
+console.log(airline.slice(airline.lastIndexOf(' ') + 1)); // OUTPUT: Portugal
+
+console.log(airline.slice(-2)); // OUTPUT: al
+console.log(airline.slice(1, -1)); // OUTPUT: AP Air Portuga
+
+const checkMiddleSeat = function(seat) {
+  // B and E are middle seats
+  const s = seat.slice(-1);
+  if(s === 'B' || s === 'E'){ 
+    console.log('You got the middle seat 😬');
+  } else {
+    console.log('You got lucky 😎');
+  }
+}
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
+
+///////////////////////////////////////
 // Summary: Which Data Structure to Use?
 /*
   Sources of Data:
