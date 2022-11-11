@@ -114,4 +114,41 @@ console.log(jonas);
     - First class functions is just a feature that programming languages either has or does not have. All it means is that all functions are values. 
 */
 
+// Functions Accepting Callback Functions
+const oneWord = function(str){
+    return str.replaceAll(' ', '').toLowerCase();
+}
 
+const upperFirstWord = function(str) {
+    const [first, ...others]= str.split(' ');
+    return [first.toUpperCase(), ...others].join(' ');
+}
+
+// Higher-Order function as it takes a function as input
+const transformer = function(str, fn) {
+    console.log(`Original string: ${str}`);
+    console.log(`Transformed string: ${fn(str)}`);
+
+    console.log(`Transformed by: ${fn.name}`);
+}
+
+transformer('JavaScript is the best!', upperFirstWord);
+transformer('JavaScript is the best!', oneWord);
+
+const high5 = function(){
+    console.log('👋🏻');
+}
+
+document.body.addEventListener('click', high5);
+
+['Jonas', 'Martha', 'Adam'].forEach(high5);
+
+// NOTE: upperFirstWord, oneWord, high5 these functions are called callback functions as they are later called inside the transformer function. JS uses callbacks all the time.
+
+/*
+    Reasons why JS uses callback functions:
+    - First big advantage, is it allows the developers to split up the code into more reusable and interconnected parts.
+    - Callback functions allows to create abstraction. So basically what abstraction means is that we hide the detail of some code implementation. 
+
+    Therefore it also makes sense to call transformer a higher-order function because this function here operates at a higher level of abstraction, leaving the low level details to this low level functions (oneWord and upperFirstWord). 
+*/
