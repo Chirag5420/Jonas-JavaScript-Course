@@ -114,6 +114,8 @@ console.log(jonas);
     - First class functions is just a feature that programming languages either has or does not have. All it means is that all functions are values. 
 */
 
+/*
+////////////////////////////////////////
 // Functions Accepting Callback Functions
 const oneWord = function(str){
     return str.replaceAll(' ', '').toLowerCase();
@@ -142,6 +144,7 @@ const high5 = function(){
 document.body.addEventListener('click', high5);
 
 ['Jonas', 'Martha', 'Adam'].forEach(high5);
+*/
 
 // NOTE: upperFirstWord, oneWord, high5 these functions are called callback functions as they are later called inside the transformer function. JS uses callbacks all the time.
 
@@ -152,3 +155,29 @@ document.body.addEventListener('click', high5);
 
     Therefore it also makes sense to call transformer a higher-order function because this function here operates at a higher level of abstraction, leaving the low level details to this low level functions (oneWord and upperFirstWord). 
 */
+
+// Functions Returning Functions 
+const greet = function(greeting) {
+    return function(name) {
+        console.log(`${greeting} ${name}`);
+    }
+}
+
+const greeterHey = greet('Hey'); // this returns a function which is stored in the greeterHey variable
+greeterHey('Jonas');
+greeterHey('Steven');
+
+greet('Hello')('Jonas');
+
+// Challenge 
+const greetArrow = (greeting) => {
+    return (greetName) => {
+        console.log(`${greeting} ${greetName}`);
+    }
+}
+
+// Alternative way to write the above arrow function 
+const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+
+greetArrow('Hey there!')('Jonas Schmedtmann');
+greetArr('Hi')('Jonas');
