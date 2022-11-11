@@ -156,6 +156,8 @@ document.body.addEventListener('click', high5);
     Therefore it also makes sense to call transformer a higher-order function because this function here operates at a higher level of abstraction, leaving the low level details to this low level functions (oneWord and upperFirstWord). 
 */
 
+/*
+////////////////////////////////
 // Functions Returning Functions 
 const greet = function(greeting) {
     return function(name) {
@@ -181,3 +183,61 @@ const greetArr = greeting => name => console.log(`${greeting} ${name}`);
 
 greetArrow('Hey there!')('Jonas Schmedtmann');
 greetArr('Hi')('Jonas');
+*/
+
+// The call and apply Methods
+const lufthansa = {
+    airline: 'Lufthansa',
+    iataCode: 'LH',
+    bookings: [],
+    // book: function()
+    book(flightNum, name) {
+        console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+        this.bookings.push({
+            flight: `${this.iataCode}${flightNum}`,
+            name
+        })
+    },
+};
+
+lufthansa.book(239, 'Jonas Schmedtmann');
+lufthansa.book(635, 'John Smith');
+console.log(lufthansa);
+
+const eurowings = {
+    airline: 'Eurowings', 
+    iataCode: 'EW', 
+    bookings: [],
+};
+
+// here the book function is no longer a method as its not associated with any object. So we would get undefined for this.airline for example. 
+const book = lufthansa.book;
+
+// Does NOT work
+// book(23, 'Sarah Williams');
+
+// Since functions are really just a object and objects have methods and therefore functions have methods such as call(). 
+
+// Call method 
+// In the call() method the first argument is exactly what we want the 'this' keyword to point to. In the below example, we passed eurowings object.
+book.call(eurowings, 23, 'Sarah Williams');
+console.log(eurowings);
+
+book.call(lufthansa, 239, 'Mary Cooper');
+console.log(lufthansa);
+
+const swiss = {
+    airline: 'Swiss Air Lines', 
+    iataCode: 'LX',
+    bookings: [],
+}
+
+book.call(swiss, 583, 'Mary Cooper');
+
+// Apply method (it is not used much in modern JS)
+const flightData = [583, 'George Cooper'];
+book.apply(swiss, flightData);
+console.log(swiss);
+
+book.call(swiss, ...flightData);
+console.log(swiss);
