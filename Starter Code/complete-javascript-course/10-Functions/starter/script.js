@@ -25,6 +25,7 @@ createBooking('LH123', 5);
 createBooking('LH123', undefined, 1000);
 */
 
+/*
 // How Passing Arguments Works: Value vs. Reference 
 const flight = 'LH234';
 const jonas = {
@@ -61,4 +62,56 @@ newPassport(jonas);
 checkIn(flight, jonas);
 console.log(jonas);
 
-// NOTE : JavaScript does not have Pass by Reference, it only has Pass by Value. So even for reference types like objects, we pass in a reference (so the memory address of the object). However, that reference is still a value. It's simply a value that contains a memory address. So basically, we pass a reference to the function but we do not pass by reference.  
+// NOTE : JavaScript does not have Pass by Reference, it only has Pass by Value. So even for reference types like objects, we pass in a reference (so the memory address of the object). However, that reference is still a value. It's simply a value that contains a memory address. So basically, we pass a reference to the function but we do not pass by reference.
+*/
+
+// First-Class and Higher-Order Functions
+/*
+    First-Class vs. Higher-Order Functions
+
+    First-Class Functions
+    - JavaScript treats functions as first-class citizens
+    - This means that functions are simply values
+    - Functions are just another "type" of object
+
+    Store functions in variables or properties:
+    const add = (a, b) => a + b;
+    const counter = {
+        value: 23,
+        inc: function() { this.value++; }
+    }
+
+    Pass functions as arguments to OTHER functions:
+    const greet = () => console.log('Hey Jonas');
+    btnClose.addEventListener('click', greet);
+
+    Return functions FROM functions
+
+    Call methods on functions:
+    counter.inc.bind(someOtherObject);
+
+    ----------------------------------------------------
+
+    Higher-Order Functions
+    - A function that receives another function as an argument, that returns a new function, or both
+    - This is only possible because of first-class functions
+
+    1. Function that receives another function
+    const greet = () => console.log('Hey Jonas');
+    btnClose.addEventListener('click', greet); // addEventListener is a higher-order function because it receives another function (greet()) as input. greet() is a callback function because the callback function will be called later by the higher order function (here as soon as the button is clicked)
+
+    2. Function that returns new function
+    function count(){
+        let counter = 0;
+        return function() {
+            counter++;
+        }
+    }
+
+    //count() is a higher-order function 
+
+    Summary:
+    - First class functions is just a feature that programming languages either has or does not have. All it means is that all functions are values. 
+*/
+
+
