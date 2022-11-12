@@ -295,6 +295,8 @@ const addTaxRate = function (rate){
 console.log(addTaxRate(0.23)(100));
 */
 
+/*
+////////////////////////////
 // Immediately Invoked Function Expressions (IIFE)
 // Sometimes in JavaScript, we need a function that is only executed once and then never again. So basically a function that disappears right after it's called once. It is useful when we would be discussing about async/await. 
 
@@ -320,3 +322,53 @@ runOnce();
 // console.log(notPrivate);
 
 // This is the reason that in modern JS, IIFE are not that used anymore. Because if all we want is to create a new scope for data privacy, all we need to do is to create a scope like above. On the other hand, if we really need to execute a function once then IIFE is the way to go.
+*/
+
+// Closures
+const secureBooking = function() {
+    let passengerCount = 0;
+
+    return function() {
+        passengerCount++;
+        console.log(`${passengerCount} passengers`);
+    }
+}
+
+// Explanation
+/*
+    Before we start running the secureBooking() function, our code is running the Global Execution Context. And in there we currently, only have this secureBooking() function. So we can also say, that the Global scope only contains secureBooking. 
+
+    When secureBooking is actually executed, a new execution context is put on top of the execution stack. Remember, each execution context has a variable environment which contains all its local variables (passengerCount for example here). 
+
+    Now the next line, we return a function which is stored in the booker variable which is also a part of the global execution context.
+
+    So when the secureBooking function returns, its execution context is popped off the stack as it has played its role and finished its execution.
+
+    So basically what a closure does is, it makes a function remember all the variables that existed at the function's birthplace essentially. So as secureBooking () can be considered as the birthplace for that function being returned (Booker function). 
+
+    So when booker function execution starts, a new execution context is created and it is put on the top of the call stack and the variable environment of this context is emptied simply because there are no variables declared in this function. 
+
+    Since booker function is in the global context, it's simply a child scope of the global scope. 
+
+    Closure Explanation :
+    A function always has access to the variable environment of the execution context in which it was created, even after that execution context has gone. 
+
+    Closure: Variable Environment (VE) attached to the function, exactly as it was at the time and place the function was created
+
+    More easier explanation, so a function never loses connection to the variables that existed at the function birthplace.
+*/
+const booker = secureBooking();
+booker();
+booker();
+booker();
+console.dir(booker);
+
+/*
+    Closure Summary:
+    - A closure is the closed-over variable environment of the execution context in which a function was created, even after that execution context is gone.
+    - A closure gives a function access to all the variables of its parent function, even after that parent function has returned. The function keeps a reference to its outer scope, which preserves the scope chain throughout time.
+    - A closure makes sure that a function doesn't loose connection to variables that existed at the function's birth place.
+    - A closure is like a backpack that a function carries around wherever it goes. This bacpack has all the variables that were present in the environment where the function was created.
+
+    NOTE: We do NOT have to manually create closures, this is a JavaScript feature that happens automatically. We can't even access closed-over variables explicitly. A closure is NOT a tangible JavaScript object. 
+*/
