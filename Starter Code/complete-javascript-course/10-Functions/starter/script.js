@@ -185,6 +185,7 @@ greetArrow('Hey there!')('Jonas Schmedtmann');
 greetArr('Hi')('Jonas');
 */
 
+/////////////////////////////
 // The call and apply Methods
 const lufthansa = {
     airline: 'Lufthansa',
@@ -241,3 +242,52 @@ console.log(swiss);
 
 book.call(swiss, ...flightData);
 console.log(swiss);
+
+// The bind method
+// Just like the call method, bind also allows us to manually set this keywords for any function call. The difference is that the bind method does not immediately call the function. Instead it returns a new function where the this keyword is bound. So it's set to whatever value we pass into bind. 
+
+// book.call(eurowings, 23, 'Sarah Williams');
+
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+bookEW(23, 'Steven Williams')
+
+// we can use bind() function to create a function for one specific airline and specific flight number
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Jonas Schmedtmann');
+bookEW23('Martha Cooper');
+console.log(eurowings);
+
+// With Event Listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function(){
+    console.log(this);
+
+    this.planes++;
+    console.log(this.planes);
+}
+
+// Since the addEventListener function, its the button element with buy id calling the function, the this keyword happens to point to the button element. But now since we want the this keyword to point to lufthansa, we make use of the bind function. Lastly, we do not use call() method because it would call the function immediately which is not what we want
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+// Partial application (means we can preset parameters)
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+// Since the first parameter in bind() function is always the object to which the this keyword should point to. But as the addTax method does not have this keyword, we pass in null. 
+const addVAT = addTax.bind(null, 0.23);
+// addVAT = value => value + value * 0.23;
+
+console.log(addVAT(100));
+console.log(addVAT(23));
+
+// Challenge
+const addTaxRate = function (rate){
+    return function(value){
+        return value + value * rate;
+    }
+}
+
+console.log(addTaxRate(0.23)(100));
