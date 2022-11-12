@@ -185,6 +185,7 @@ greetArrow('Hey there!')('Jonas Schmedtmann');
 greetArr('Hi')('Jonas');
 */
 
+/*
 /////////////////////////////
 // The call and apply Methods
 const lufthansa = {
@@ -243,6 +244,7 @@ console.log(swiss);
 book.call(swiss, ...flightData);
 console.log(swiss);
 
+//////////////////////////
 // The bind method
 // Just like the call method, bind also allows us to manually set this keywords for any function call. The difference is that the bind method does not immediately call the function. Instead it returns a new function where the this keyword is bound. So it's set to whatever value we pass into bind. 
 
@@ -291,3 +293,30 @@ const addTaxRate = function (rate){
 }
 
 console.log(addTaxRate(0.23)(100));
+*/
+
+// Immediately Invoked Function Expressions (IIFE)
+// Sometimes in JavaScript, we need a function that is only executed once and then never again. So basically a function that disappears right after it's called once. It is useful when we would be discussing about async/await. 
+
+const runOnce = function (){
+    console.log('This will never run again');
+}
+runOnce();
+
+// Initially the below function would not get executed because of not providing the function name. But we can trick JavaScript into believing it to be an expression simply by adding parantheses () around the function block. Now in order to call it, we just need to add () at the end. Since we call it immediately, this pattern here is called 'Immediately Invoked Function Expressions (IIFE)
+(function () {
+    console.log('This will never run again');
+})();
+
+// The same would also work for an arrow function 
+(() => console.log('This will ALSO never run again'))();
+
+{
+    const isPrivate = 23;
+    var notPrivate = 46;
+}
+
+// console.log(isPrivate); // OUTPUT: ReferenceError (Since variables declared with let and const create their own scope inside a block)
+// console.log(notPrivate);
+
+// This is the reason that in modern JS, IIFE are not that used anymore. Because if all we want is to create a new scope for data privacy, all we need to do is to create a scope like above. On the other hand, if we really need to execute a function once then IIFE is the way to go.
