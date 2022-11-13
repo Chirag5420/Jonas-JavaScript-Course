@@ -372,3 +372,50 @@ console.dir(booker);
 
     NOTE: We do NOT have to manually create closures, this is a JavaScript feature that happens automatically. We can't even access closed-over variables explicitly. A closure is NOT a tangible JavaScript object. 
 */
+
+// More Closure Examples
+
+// Example 1
+let f; 
+
+const g = function () {
+    const a = 23;
+    f = function(){
+        console.log(a * 2);
+    }
+}
+
+g();
+f(); // OUTPUT : 46
+console.dir(f); //closure is a 
+
+// This proves that this f value here, so this f function really does close over any variables of the execution context in which it was defined. And that is true, even when the variable itself. 
+
+const h = function() {
+    const b = 777;
+    f = function(){
+        console.log(b * 2);
+    }
+}
+
+// Re-assigning f function
+h();
+f();
+console.dir(f); //closure is b as it was reassigned 
+
+// Example 2
+const boardPassengers = function (n, wait) {
+    const perGroup = n / 3;
+
+    setTimeout(function () {
+        console.log(`We are now boarding all ${n} passengers`);
+        console.log(`There are 3 groups, each with ${perGroup} passengers`);
+    }, wait * 1000);
+
+    console.log(`Will start boarding in ${wait} seconds`);
+}
+
+// const perGroup = 1000; // The perGroup in the console still happens to be 60. This proves that closure has priority over the scope chain. 
+boardPassengers(180, 3);
+
+// The callback function was able to use all the variables declared in the boardPassengers function execution context. This is a clear sign of a closure being created. 
