@@ -74,3 +74,36 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+let arr = ['a', 'b', 'c', 'd', 'e'];
+
+// SLICE method
+console.log(arr.slice(2)); // OUTPUT: ['c', 'd', 'e']
+console.log(arr.slice(2, 4)); // OUTPUT: ['c', 'd']
+console.log(arr.slice(-1)); // OUTPUT: ['e']
+console.log(arr.slice(1, -1)); // OUTPUT: ['b', 'c', 'd']
+
+// Create a shallow copy of any array using slice method
+console.log(arr.slice()); // OUTPUT: ['a', 'b', 'c', 'd', 'e']
+console.log([...arr]); // OUTPUT: ['a', 'b', 'c', 'd', 'e']
+
+// SPLICE method (it is quite similar to the slice method, but it also mutates the original array. So the extracted elements are gone from the original array)
+// console.log(arr.splice(2)); // OUTPUT: ['c', 'd', 'e']
+console.log(arr.splice(-1)); // OUTPUT: ['e']
+console.log(arr); // OUTPUT: ['a', 'b', 'c', 'd']
+console.log(arr.splice(1, 2)); // OUTPUT: ['b', 'c'] (So the second parameter in splice() method is deleteCount. So in this example, we go to index 1 and extract 2 elements 'b' and 'c')
+console.log(arr); // OUTPUT: ['a', 'd']
+
+// REVERSE 
+arr = ['a', 'b', 'c', 'd', 'e'];
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+console.log(arr2.reverse()); // Please Note: reverse() method mutates the original array
+console.log(arr2); // OUTPUT: ['f', 'g', 'h', 'i', 'j']
+
+// CONCAT
+const letters = arr.concat(arr2);
+console.log(letters); // OUTPUT: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+console.log([...arr, ...arr2]); // OUTPUT: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+// JOIN 
+console.log(letters.join(' - ')); // OUTPUT: a - b - c - d - e - f - g - h - i - j
