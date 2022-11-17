@@ -71,7 +71,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -112,6 +112,8 @@ console.log([...arr, ...arr2]); // OUTPUT: ['a', 'b', 'c', 'd', 'e', 'f', 'g', '
 console.log(letters.join(' - ')); // OUTPUT: a - b - c - d - e - f - g - h - i - j
 */
 
+/*
+/////////////////////////
 // The new at Method 
 const arr = [23, 11, 64];
 console.log(arr[0]);
@@ -127,3 +129,39 @@ console.log(arr.at(-1));
 
 // at method also works for string
 console.log('jonas'.at(0)); // OUTPUT: j
+*/
+
+// Looping Arrays: forEach
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+//for(const movement of movements){
+// This is how we used to access the counter variable in for-of loop
+for(const [i, movement] of movements.entries()) {
+  if(movement > 0) {
+    console.log(`Movement ${i + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
+  }
+}
+
+// When would the callback function be invoked? 
+// So basically the forEach method loops over the array and in each iteration it would call this callback function. Also as the forEach method calls this callback function in each iteration it would pass in the current element of the array as an argument. 
+
+//forEach method passes in the current element, index and entire array that we are passing. The names of the variables do not matter but the order matters. So the first element needs to be the element in an array, the second one the index and the third one the entire array that we are looping over
+console.log('----- FOREACH ----');
+movements.forEach(function(movement, index, array) {
+  if(movement > 0) {
+    console.log(`Movement ${index + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${index + 1}: You withdrew ${Math.abs(movement)}`);
+  }
+});
+
+// Behind the Scenes
+// Iteration 0: function (200)
+// Iteration 1: function(450)
+// Iteration 2: function(400)
+// ...
+
+// for-of loop vs. forEach loop
+// One fundamental difference between them is that we cannot break out of forEach loop. So the continue and break statements do not work in a forEach loop at all. So forEach would always loop over the entire array. 
