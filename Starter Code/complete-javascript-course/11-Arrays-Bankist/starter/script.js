@@ -61,6 +61,28 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayMovements = function(movements) {
+  containerMovements.innerHTML = '';
+
+  movements.forEach(function(mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    const html = `        
+    <div class="movements__row">
+      <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
+      <div class="movements__value">${Math.abs(mov)}</div>
+    </div>
+  `;
+    // To include the html we would need to make use of a method called insertAdjacentHTML
+    // The first parameter would be the position where we want the html to be added. So those are :
+    // beforebegin, afterbegin, beforeend, afterend
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+}
+displayMovements(account1.movements);
+
+// console.log(containerMovements.innerHTML);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -169,6 +191,8 @@ movements.forEach(function(movement, index, array) {
 // One fundamental difference between them is that we cannot break out of forEach loop. So the continue and break statements do not work in a forEach loop at all. So forEach would always loop over the entire array. 
 */
 
+/*
+/////////////////////////////
 // forEach With Maps and Sets
 
 // Map
@@ -190,3 +214,4 @@ console.log(currenciesUnique);
 currenciesUnique.forEach(function (value, key, map) {
   console.log(`${key}: ${value}`); // OUTPUT: USD: USD (Since sets do not have indexes or any keys, so the developers had set the second argument same as the first argument)
 });
+*/
