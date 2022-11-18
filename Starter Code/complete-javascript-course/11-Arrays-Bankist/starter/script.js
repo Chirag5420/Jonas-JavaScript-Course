@@ -65,11 +65,11 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -131,6 +131,8 @@ console.log(arr.at(-1));
 console.log('jonas'.at(0)); // OUTPUT: j
 */
 
+/*
+///////////////////////////
 // Looping Arrays: forEach
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -165,3 +167,26 @@ movements.forEach(function(movement, index, array) {
 
 // for-of loop vs. forEach loop
 // One fundamental difference between them is that we cannot break out of forEach loop. So the continue and break statements do not work in a forEach loop at all. So forEach would always loop over the entire array. 
+*/
+
+// forEach With Maps and Sets
+
+// Map
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+// The first element is the current value in the current iteration. The second element is the key and the third element that is the entire map that would be iterated on. 
+currencies.forEach(function(value, key, map){
+  console.log(`${key}: ${value}`);
+});
+
+// Set 
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+console.log(currenciesUnique);
+
+currenciesUnique.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`); // OUTPUT: USD: USD (Since sets do not have indexes or any keys, so the developers had set the second argument same as the first argument)
+});
