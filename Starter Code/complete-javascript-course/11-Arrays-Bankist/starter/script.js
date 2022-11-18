@@ -93,7 +93,7 @@ displayMovements(account1.movements);
 //   ['GBP', 'Pound sterling'],
 // ]);
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -243,3 +243,33 @@ currenciesUnique.forEach(function (value, key, map) {
 
   13 (reduced value)
 */
+
+// The map method
+const eurToUsd = 1.1;
+
+// const movementsUSD = movements.map(function(mov) {
+//   return mov * eurToUsd;
+//   // return Math.round(Math.abs(mov) * eurToUsd);
+// });
+
+const movementsUSD = movements.map(mov => mov * eurToUsd);
+console.log(movementsUSD);
+
+console.log(movements);
+console.log(movementsUSD);
+
+const movementsUSDfor = [];
+for(const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+console.log(movementsUSDfor);
+
+const movementsDescriptions = movements.map((mov, i) => 
+  `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
+  // if(movement > 0) {
+  //   return `Movement ${i + 1}: You deposited ${mov}`;
+  // } else {
+  //   return `Movement ${i + 1}: You withdrew ${Math.abs(mov)}`;
+  // }
+)
+console.log(movementsDescriptions);
+
+// NOTE: One big difference between the forEach method and map method is that forEach used to log to the console the output one by one. Whereas by using the map method, we stored the output returned into an array and then logged it all together. 
