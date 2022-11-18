@@ -215,3 +215,31 @@ currenciesUnique.forEach(function (value, key, map) {
   console.log(`${key}: ${value}`); // OUTPUT: USD: USD (Since sets do not have indexes or any keys, so the developers had set the second argument same as the first argument)
 });
 */
+
+// Data Transformations: map, filter, reduce
+/*
+  map: map returns a new array containing the results of applying an operation on all original array elements
+  For example: 
+  [3, 1, 4, 3, 2]
+  
+  current * 2
+
+  [6, 2, 8, 6, 4]
+
+
+  filter: filter returns a new array containing the array elements that passed a specified test condition
+  For example:
+  [3, 1, 4, 3, 2]
+  
+  current > 2
+
+  [3, 4, 3] (filtered array)
+
+  reduce: reduce boils ("reduces") all array elements down to one single value (e.g. adding all elements together)
+  For example: 
+  [3, 1, 4, 3, 2]
+
+  acc (accumulator) + current 
+
+  13 (reduced value)
+*/
