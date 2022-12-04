@@ -70,7 +70,7 @@ const displayMovements = function(movements) {
     const html = `        
     <div class="movements__row">
       <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
-      <div class="movements__value">${Math.abs(mov)}</div>
+      <div class="movements__value">${Math.abs(mov)}€</div>
     </div>
   `;
     // To include the html we would need to make use of a method called insertAdjacentHTML
@@ -107,6 +107,29 @@ const calcDisplayBalance = function(movements) {
 }
 
 calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  
+  labelSumIn.textContent = `${incomes}€`
+
+  // Challenge
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  
+  labelSumOut.textContent = `${Math.abs(out)}€`
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2)/100)
+    .filter(interest => interest > 1)
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
+}
+calcDisplaySummary(account1.movements);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -349,3 +372,17 @@ const maximumBalance = movements.reduce(function(acc, cur){
 }, movements[0]);
 console.log(maximumBalance);
 */
+
+// The Magic of Chaining Methods
+
+// PIPELINE
+const eurToUsd = 1.1;
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map((mov, i, arr) => {
+    console.log(arr);
+    return mov * eurToUsd;
+  })
+  // .map(mov => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD);
