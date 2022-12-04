@@ -325,6 +325,7 @@ const withdrawals = movements.filter(function(mov){
 console.log(withdrawals);
 */
 
+/*
 // The reduce method
 console.log(movements);
 
@@ -347,3 +348,4 @@ const maximumBalance = movements.reduce(function(acc, cur){
   return acc < cur ? cur : acc;
 }, movements[0]);
 console.log(maximumBalance);
+*/
