@@ -289,3 +289,27 @@ const movementsDescriptions = movements.map((mov, i) =>
 console.log(movementsDescriptions);
 
 // NOTE: One big difference between the forEach method and map method is that forEach used to log to the console the output one by one. Whereas by using the map method, we stored the output returned into an array and then logged it all together. 
+
+// The filter method 
+const deposits = movements.filter(function(mov){
+  return mov > 0;
+});
+
+console.log(movements);
+console.log(deposits);
+
+// Alternative to filter() method, using for-of loop
+const depositsFor = [];
+for(const mov of movements) {
+  if(mov > 0){
+    depositsFor.push(mov);
+  }
+}
+console.log(depositsFor);
+
+// Challenge
+const withdrawals = movements.filter(function(mov){
+  return mov < 0;
+});
+
+console.log(withdrawals);
