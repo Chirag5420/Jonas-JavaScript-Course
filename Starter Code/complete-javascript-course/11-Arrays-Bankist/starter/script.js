@@ -373,6 +373,7 @@ const maximumBalance = movements.reduce(function(acc, cur){
 console.log(maximumBalance);
 */
 
+/*
 // The Magic of Chaining Methods
 
 // PIPELINE
@@ -386,3 +387,16 @@ const totalDepositsUSD = movements
   // .map(mov => mov * eurToUsd)
   .reduce((acc, mov) => acc + mov, 0);
 console.log(totalDepositsUSD);
+*/
+
+// The find Method
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal);
+
+// Fundamental Difference between find() method and filter() method
+// Filter method returns all the elements that match the condition while the find method only returns the first one
+// Secondly, Filter method returns a new array while find method only returns the element and not an array
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
