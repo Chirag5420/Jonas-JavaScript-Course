@@ -97,7 +97,16 @@ const createUsernames = function (accs) {
 }
 
 createUsernames(accounts);
-console.log(accounts);
+//console.log(accounts);
+
+const calcDisplayBalance = function(movements) {
+  const balance = movements.reduce(function(acc, mov){
+    return acc + mov;
+  });
+  labelBalance.textContent = `${balance}€`;
+}
+
+calcDisplayBalance(account1.movements);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -260,6 +269,7 @@ currenciesUnique.forEach(function (value, key, map) {
   13 (reduced value)
 */
 
+/*
 // The map method
 const eurToUsd = 1.1;
 
@@ -313,3 +323,27 @@ const withdrawals = movements.filter(function(mov){
 });
 
 console.log(withdrawals);
+*/
+
+// The reduce method
+console.log(movements);
+
+// accumulator -> SNOWBALL
+const balance = movements.reduce(function(acc, cur, i, arr){
+  console.log(`Iteration ${i}" ${acc}`);
+  return acc + cur;
+}, 0);
+console.log(balance);
+
+// Alternative for-of loop
+let balance2 = 0;
+for(const mov of movements){
+  balance2 += mov;
+}
+console.log(balance2);
+
+// Maximum value using reduce() method
+const maximumBalance = movements.reduce(function(acc, cur){
+  return acc < cur ? cur : acc;
+}, movements[0]);
+console.log(maximumBalance);
