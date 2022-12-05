@@ -98,11 +98,12 @@ const createUsernames = function (accs) {
 createUsernames(accounts);
 //console.log(accounts);
 
-const calcDisplayBalance = function(movements) {
-  const balance = movements.reduce(function(acc, mov){
+const calcDisplayBalance = function(account) {
+  account.balance = account.movements.reduce(function(acc, mov){
     return acc + mov;
   });
-  labelBalance.textContent = `${balance}€`;
+
+  labelBalance.textContent = `${account.balance}€`;
 }
 
 const calcDisplaySummary = function (account) {
@@ -127,6 +128,17 @@ const calcDisplaySummary = function (account) {
   labelSumInterest.textContent = `${interest}€`;
 }
 
+const updateUI = function(acc) {
+    // Display movements
+    displayMovements(acc.movements);
+
+    // Display balance
+    calcDisplayBalance(acc);
+
+    // Display summary
+    calcDisplaySummary(acc);
+}
+
 // Implementing Login 
 // Event Handler
 let currentAccount;
@@ -147,17 +159,34 @@ btnLogin.addEventListener('click', function(event) {
     // Clear inpt fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
-
-    // Display movements
-    displayMovements(currentAccount.movements);
-
-    // Display balance
-    calcDisplayBalance(currentAccount.movements);
-
-    // Display summary
-    calcDisplaySummary(currentAccount);
   }
+
+  // Update UI
+  updateUI(currentAccount);
 });
+
+// Implementing Transfers
+btnTransfer.addEventListener('click', function(event){
+  event.preventDefault();
+
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
+
+  inputTransferAmount.value = inputTransferTo.value = '';
+  if(
+    amount > 0 && 
+    receiverAcc && 
+    currentAccount.balance >= amount && 
+    receiverAcc?.username !== currentAccount.username
+    ) {
+      currentAccount.movements.push(-amount)
+      receiverAcc.movements.push(amount);
+
+      // Update UI
+      updateUI(currentAccount);
+  }
+  console.log(receiverAcc);
+})
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
