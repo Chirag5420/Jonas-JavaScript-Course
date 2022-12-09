@@ -515,3 +515,37 @@ const deposit = mov => mov > 0;
 console.log(movements.some(deposit));
 console.log(movements.every(deposit));
 console.log(movements.filter(deposit));
+
+// flat and flatMap
+const arr = [[1, 2, 3], [4,5,6], 7, 8];
+console.log(arr.flat()); // OUTPUT: [1, 2, 3, 4, 5, 6, 7, 8]
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat()); // OUTPUT: [[1, 2], 3, 4, [5, 6], 7, 8]
+console.log(arrDeep.flat(2)); // OUTPUT: [1, 2, 3, 4, 5, 6, 7, 8]
+
+// NOTE: The flat method only goes one level deep by default, while flattening an array. If we want to increase the depth, we must specify it as an argument inside the flat() method.
+
+// const accountMovements = accounts.map(acc => acc.movements);
+// console.log(accountMovements);
+
+// const allMovements = accountMovements.flat();
+// console.log(allMovements);
+
+// const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+// console.log(overallBalance);
+
+// Using Chaining
+const overallBalance = accounts
+      .map(acc => acc.movements)
+      .flat()
+      .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance);
+
+// flatmap method essentially combines a map and a flat method into one method which is better for performance
+const overallBalance2 = accounts
+      .flatMap(acc => acc.movements)
+      .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance2);
+
+// NOTE: flatmap only goes one level deep and cannot be modified 
