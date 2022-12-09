@@ -61,10 +61,13 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function(movements) {
+const displayMovements = function(movements, sort = false) {
   containerMovements.innerHTML = '';
 
-  movements.forEach(function(mov, i) {
+  // NOTE: Making a copy of the original array using slice() method and not the spread operator as we are in the middle of chaining
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function(mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `        
@@ -219,6 +222,13 @@ btnClose.addEventListener('click', function (event) {
   }
 
   inputCloseUsername.value = inputClosePin.value = '';
+});
+
+let sorted = false;
+btnSort.addEventListener('click', function(event) {
+  event.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 })
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -491,7 +501,8 @@ console.log(firstWithdrawal);
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
 */
-
+/*
+/////////////////////////////////////
 // some and every method
 
 // SOME
@@ -516,6 +527,7 @@ console.log(movements.some(deposit));
 console.log(movements.every(deposit));
 console.log(movements.filter(deposit));
 
+/////////////////////////////////////
 // flat and flatMap
 const arr = [[1, 2, 3], [4,5,6], 7, 8];
 console.log(arr.flat()); // OUTPUT: [1, 2, 3, 4, 5, 6, 7, 8]
@@ -549,3 +561,40 @@ const overallBalance2 = accounts
 console.log(overallBalance2);
 
 // NOTE: flatmap only goes one level deep and cannot be modified 
+*/
+
+//////////////////////////////////
+// Sorting Arrays
+
+// Strings
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log(owners.sort()); // NOTE: This mutates the original array as well
+console.log(owners);
+
+// Numbers
+console.log(movements);
+// console.log(movements.sort()); // Numbers not sorted in any specific order. The reason for this, is that the sort method does the sorting based on strings. So it converts the numbers to string first and then sorts. So then the output would make sense. 
+// OUTPUT: [-130, -400, -650, 1300, 200, 3000, 450, 70]
+
+// return < 0, A, B (keep order)
+// return > 0, B, A (switch order)
+
+// Ascending
+// movements.sort((a, b) => {
+//   if(a > b)
+//     return 1;
+//   if(a < b)
+//     return -1;
+// });
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+// Descending
+// movements.sort((a, b) => {
+//   if(a > b)
+//     return -1;
+//   if(a < b)
+//     return 1;
+// });
+movements.sort((a, b) => b - a);
+console.log(movements);
