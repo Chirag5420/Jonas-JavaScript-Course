@@ -188,6 +188,21 @@ btnTransfer.addEventListener('click', function(event){
   console.log(receiverAcc);
 })
 
+btnLoan.addEventListener('click', function(event){
+  event.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if(amount > 0 && currentAccount.movements.some(mov => mov >= 0.1 * amount)){
+    // Add movement
+    currentAccount.movements.push(amount);
+
+    // Update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+})
+
 // The findIndex Method
 btnClose.addEventListener('click', function (event) {
   event.preventDefault();
@@ -463,6 +478,7 @@ const totalDepositsUSD = movements
 console.log(totalDepositsUSD);
 */
 
+/*
 // The find Method
 const firstWithdrawal = movements.find(mov => mov < 0);
 console.log(movements);
@@ -474,3 +490,28 @@ console.log(firstWithdrawal);
 
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
+*/
+
+// some and every method
+
+// SOME
+console.log(movements);
+
+// EQUALITY
+console.log(movements.includes(-130)); // OUTPUT: true
+
+// CONDITION
+console.log(movements.some(mov => mov === -130));
+
+const anyDeposits = movements.some(mov => mov > 0);
+console.log(anyDeposits);
+
+// EVERY 
+console.log(movements.every(mov => mov > 0)); // false
+console.log(account4.movements.every(mov => mov > 0)); // true
+
+// Separate callback
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
