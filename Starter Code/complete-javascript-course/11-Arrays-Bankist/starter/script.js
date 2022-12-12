@@ -563,6 +563,7 @@ console.log(overallBalance2);
 // NOTE: flatmap only goes one level deep and cannot be modified 
 */
 
+/*
 //////////////////////////////////
 // Sorting Arrays
 
@@ -598,3 +599,40 @@ console.log(movements);
 // });
 movements.sort((a, b) => b - a);
 console.log(movements);
+*/
+
+// More Ways of Creating and Filling Arrays
+const arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+// Empty arrays + fill method
+const x = new Array(7);
+console.log(x); // OUTPUT: [empty × 7]
+
+// To fill in the array, we need to make use of fill() method and then it would fill the entire array with this specific value and mutates the original array
+// x.fill(1);
+x.fill(1, 3, 5); // We can even specify the begin and end parameter which is index 3 and 5 respectively here. So the output would be  [empty × 3, 1, 1, empty × 2]. Thus excluding filling at the end index. 
+console.log(x);
+
+arr.fill(23, 2, 6);
+console.log(arr); // OUTPUT: [1, 2, 23, 23, 23, 23, 7]
+
+// Array.from function can be used to get back the original arrya
+const y = Array.from({length: 7}, () => 1);
+console.log(y);
+
+// _ means a throwaway variable 
+const z = Array.from({length: 7}, (_, i) => i + 1);
+console.log(z);
+
+// Challenge: 100 Random Dice Rolls
+const randomDiceRoll = Array.from({length: 100}, () => Math.round(Math.random() * 5 + 1));
+console.log(randomDiceRoll);
+
+labelBalance.addEventListener('click', function(){
+  const movementsUI = Array.from(document.querySelectorAll('.movements__value'));
+  console.log(movementsUI.map(el => Number(el.textContent.replace('€', ''))));
+
+  // Alternative way to convert NodeList (document.querySelectorAll) to Array
+  const movementsUI2 = [...document.querySelectorAll('.movements__value')];
+})
