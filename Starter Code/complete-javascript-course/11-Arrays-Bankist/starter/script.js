@@ -636,3 +636,70 @@ labelBalance.addEventListener('click', function(){
   // Alternative way to convert NodeList (document.querySelectorAll) to Array
   const movementsUI2 = [...document.querySelectorAll('.movements__value')];
 })
+
+// Summary: Which Array Method to Use?
+/* 
+To mutate original array
+  Add to original:
+    .push (end)
+    .unshift (start)
+  
+  Remove from original:
+    .pop (end)
+    .shift (start)
+    .splice (any)
+  
+  Others:
+    .reverse
+    .sort
+    .fill
+
+----------------------------------------
+A new array
+  Computed from original:
+    .map (loop)
+  
+  Filtered using condition:
+    .filter
+  
+  Portion of original:
+    .slice
+  
+  Adding original to other:
+    .concat
+  
+  Flattening the original:
+    .flat
+    .flatMap
+----------------------------------------
+An array index
+  Based on value:
+    .indexOf
+  Based on test condition:
+    .findIndex  
+----------------------------------------
+An array element
+  Based on test condition:
+    .find
+----------------------------------------
+Know if array includes 
+  Based on value:
+    .includes
+  
+  Based on test condition:
+    .some
+    .every
+----------------------------------------
+A new string 
+  Based on separator string:
+    .join
+----------------------------------------
+To transform to value
+  Based on accumulator:
+    .reduce (boil down array to single value of any type: number, string, boolean, or even new array or object)
+----------------------------------------
+To just loop array:
+  Based on callback:
+    .forEach (does not create a new array, just loops over it)
+----------------------------------------
+*/
