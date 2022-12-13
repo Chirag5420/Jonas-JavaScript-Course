@@ -289,6 +289,7 @@ console.log(Number.isInteger(23.0)); // OUTPUT: true
 console.log(Number.isInteger(23 / 0)); // OUTPUT: false
 */
 
+/*
 // Math and Rounding
 
 console.log(Math.sqrt(25)); // OUTPUT: 5
@@ -328,3 +329,25 @@ console.log((2.7).toFixed(0)); // OUTPUT: 3 NOTE: toFixed() always returns a str
 console.log((2.7).toFixed(3)); // OUTPUT: 2.700
 console.log((2.345).toFixed(2)); // OUTPUT: 2.35
 console.log(+(2.345).toFixed(2));
+*/
+
+// The Remainder Operator
+console.log(5 % 2); // OUTPUT: 1
+console.log(8 % 3); // OUTPUT: 2
+
+// Even and Odd Numbers
+console.log(6 % 2); // OUTPUT: 0
+console.log(7 % 2); // OUTPUT: 1
+
+const isEven = n => n % 2 === 0;
+console.log(isEven(8));
+console.log(isEven(23));
+console.log(isEven(514));
+
+labelBalance.addEventListener('click', function(){
+  [...document.querySelectorAll('.movements__row')]
+  .forEach(function(row, i){
+    if(i % 2 === 0) row.style.backgroundColor = 'orangered';
+    if(i % 3 === 0) row.style.backgroundColor = 'blue'
+  });
+});
