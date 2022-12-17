@@ -331,6 +331,7 @@ console.log((2.345).toFixed(2)); // OUTPUT: 2.35
 console.log(+(2.345).toFixed(2));
 */
 
+/*
 // The Remainder Operator
 console.log(5 % 2); // OUTPUT: 1
 console.log(8 % 3); // OUTPUT: 2
@@ -351,3 +352,23 @@ labelBalance.addEventListener('click', function(){
     if(i % 3 === 0) row.style.backgroundColor = 'blue'
   });
 });
+*/
+
+// Numeric Separators (they are simply underscores to better understand a very long number)
+const diameter = 287_460_000_000;
+console.log(diameter); //OUTPUT: 287460000000
+
+const price = 345_99;
+console.log(price);
+
+// the underscore gives different meanings. They both are equivalent to 1500, however the placement of 1_500 gives it a better meaning of One Thousand and Five Hundred Dollars
+const transferFee1 = 15_00;
+const transferFee2 = 1_500;
+
+// NOTE: We are not allowed to place an underscore before a number starts or after a number ends or before / after the decimal point. So it can be placed only between numbers
+const PI = 3.1415;
+console.log(PI);
+
+console.log(Number('230_000')); // OUTPUT: NaN (Note: These numeric separators can only be used when we are writing down numbers, but not in strings because then JavaScript is not being able to parse the number correctly)
+
+console.log(parseInt('230_000')); // OUTPUT: 230 (Note: Then JavaScript does not parse anything after the underscore)
