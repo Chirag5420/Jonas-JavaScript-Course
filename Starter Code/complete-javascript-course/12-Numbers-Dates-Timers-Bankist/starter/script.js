@@ -354,6 +354,7 @@ labelBalance.addEventListener('click', function(){
 });
 */
 
+/*
 // Numeric Separators (they are simply underscores to better understand a very long number)
 const diameter = 287_460_000_000;
 console.log(diameter); //OUTPUT: 287460000000
@@ -372,3 +373,32 @@ console.log(PI);
 console.log(Number('230_000')); // OUTPUT: NaN (Note: These numeric separators can only be used when we are writing down numbers, but not in strings because then JavaScript is not being able to parse the number correctly)
 
 console.log(parseInt('230_000')); // OUTPUT: 230 (Note: Then JavaScript does not parse anything after the underscore)
+*/
+
+// Working with BigInt
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(2 ** 53 + 1);
+
+console.log(483843024834203382340839483948320n); // Adding n to the end transforms a regular number into a BigInt number
+console.log(BigInt(483843024834203382340839483948320));
+
+// Operations
+console.log(10000n + 10000n);
+console.log(3628637253574574764903493285239435n * 10000n);
+
+// NOTE: We cannot mix BigInt and other numbers 
+const huge = 1243573500284248593435354n;
+const num = 23;
+console.log(huge * BigInt(num)); // OUTPUT: Uncaught TypeError (Then we must use the BigInt constructor function)
+
+console.log(20n > 15); // OUTPUT: true
+console.log(20n === 20); // OUTPUT: false
+console.log(typeof 20n); // OUTPUT: bigint
+console.log(20n == '20'); // OUTPUT: true
+
+console.log(huge + 'is REALLY big!!!');
+
+// Divisions
+console.log(10n / 3n); // OUTPUT: 3n
+console.log(10 / 3); // OUTPUT: 3.33333333333335
