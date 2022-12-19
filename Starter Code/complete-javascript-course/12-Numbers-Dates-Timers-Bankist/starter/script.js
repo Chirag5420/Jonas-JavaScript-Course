@@ -375,6 +375,7 @@ console.log(Number('230_000')); // OUTPUT: NaN (Note: These numeric separators c
 console.log(parseInt('230_000')); // OUTPUT: 230 (Note: Then JavaScript does not parse anything after the underscore)
 */
 
+/*
 // Working with BigInt
 console.log(2 ** 53 - 1);
 console.log(Number.MAX_SAFE_INTEGER);
@@ -402,3 +403,44 @@ console.log(huge + 'is REALLY big!!!');
 // Divisions
 console.log(10n / 3n); // OUTPUT: 3n
 console.log(10 / 3); // OUTPUT: 3.33333333333335
+*/
+
+// Creating Dates 
+/*
+// Create a date
+// There are four ways as below to create a date
+// 1
+const now = new Date();
+console.log(now);
+
+// 2
+console.log(new Date('Dec 19 2022 22:57:58'));
+console.log(new Date('Dec 24, 2015'));
+console.log(new Date(account1.movementsDates[0]));
+
+// 3 (NOTE: Month in JS is zero-based)
+console.log(new Date(2037, 10, 19, 15, 23, 5)); // OUTPUT: Thu Nov 19 2037 15:23:05 GMT+0530 (India Standard Time) 
+
+// 4
+console.log(new Date(0)); // OUTPUT: Thu Jan 01 1970 05:30:00 GMT+0530 (India Standard Time) - Means 0 milliseconds since initial Unix Time
+console.log(new Date(3 * 24 * 60 * 60 * 1000));
+*/
+// Working with Dates
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.toISOString());
+console.log(future.getTime());
+
+console.log(new Date(2142237180000));
+
+console.log(Date.now());
+
+future.setFullYear(2040);
+console.log(future);
