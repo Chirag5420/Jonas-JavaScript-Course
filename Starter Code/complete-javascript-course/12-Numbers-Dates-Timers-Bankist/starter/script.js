@@ -273,14 +273,16 @@ btnLoan.addEventListener('click', function (e) {
   const amount = Math.floor(inputLoanAmount.value);
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    // Add movement
-    currentAccount.movements.push(amount);
+    setTimeout(function(){
+      // Add movement
+      currentAccount.movements.push(amount);
 
-    // Add loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      // Add loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    // Update UI
-    updateUI(currentAccount);
+      // Update UI
+      updateUI(currentAccount);
+    }, 2500)
   }
   inputLoanAmount.value = '';
 });
@@ -527,6 +529,7 @@ console.log(days1);
 
 // Internationalizing Dates (Intl)
 
+/*
 // Internationalizing Numbers (Intl)
 const options = {
   style: 'currency', // Three valid values for style: unit, percent, currency
@@ -539,3 +542,26 @@ console.log('US: ', new Intl.NumberFormat('en-US', options).format(num));
 console.log('Germany: ', new Intl.NumberFormat('de-DE', options).format(num));
 console.log('Syria: ', new Intl.NumberFormat('ar-SY', options).format(num));
 console.log(navigator.language, new Intl.NumberFormat(navigator.language, options).format(num));
+*/
+
+// Timers: setTimeout and setInterval
+
+// setTimeout
+const ingredients = ['olives', 'spinach']
+const pizzaTimer = setTimeout((ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2} 🍕 `), 3000, ...ingredients); // Scheduled the function call for three seconds later
+console.log('Waiting...');
+
+if(ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+
+// NOTE: JavaScript executes the above function Asynchronously. So as soon as it reaches the setTimeout() function it registers the callback function and the time after which it needs to be invoked. After that it continues its execution and as soon as the time is achieved it invokes the callback function. So 'Waiting...' is displayed before 'Here is your pizza 🍕'
+
+// setInterval
+setInterval(function(){
+  const now = new Date();
+  const options = {
+    hour: 'numeric',
+    minute: 'numeric', 
+    second: 'numeric'
+  }
+  console.log(new Intl.DateTimeFormat('en-US', options).format(now));
+}, 1000)
