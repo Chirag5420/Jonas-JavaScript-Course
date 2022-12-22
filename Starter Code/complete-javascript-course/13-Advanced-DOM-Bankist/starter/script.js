@@ -33,3 +33,53 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+// How the DOM Really Works
+/*
+  Review: What is the DOM?
+  - DOM is basically the interface between all JavaScript code and the browser, or more specifically HTML documents that are rendered in and by the browser.  
+
+  - Allows us to make JavaScript interact with the browser;
+  - We can write JavaScript to create, modify and delete HTML elements; set styles, classes and attributes; and listen and respond to events; 
+  - DOM tree is generated from an HTML document, which we can then interact with; 
+  - DOM is a very complex API that contains lots of methods and properties to interact with the DOM tree. For example:
+    - .querySelector() / .addEventListener() / .createElement() / .innerHTML / .textContent / .children / etc ...
+
+  How the DOM API is organized behind the scenes?
+  - Every single node in the DOM tree is of the type, node. Each node is represented in JavaScript by an object. 
+  - This object gets access to special node methods and properties, such as .textContent, .childNodes, .parentNode, and .cloneNode(). 
+  - The node type has a couple of child types 
+    - element
+      - element has the element type of node. 
+      - This type of node gives each HTML element access to a ton of useful properties such as:
+        - innerHTML
+        - classList
+        - children
+        - parentElement
+        - append()
+        - remove()
+        - insertAdjacentHTML()
+        - querySelector()
+        - closest()
+        - matches()
+        - scrollIntoView()
+        - setAttribute()
+    - text
+      - So whenever there is text inside any element, we already know that it gets its own node and will be of type text
+    - comment
+      - same happens for comments as well
+    - document
+      - It is just another type of node
+      - It contains important methods such as:
+        - querySelector()
+        - createElement()
+        - getElementById()
+  - EventTarget
+    - It's a special node type which is a parent of both the Node type and also the Window node type. 
+    - Due to inheritance we can invoke the following two methods on every node:
+      - addEventListener()
+      - removeEventListener()
+
+  NOTE: The rule is that everything that's inside the HTML has to go into the DOM as well. 
+*/
+
