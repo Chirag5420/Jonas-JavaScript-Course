@@ -83,3 +83,53 @@ document.addEventListener('keydown', function (e) {
   NOTE: The rule is that everything that's inside the HTML has to go into the DOM as well. 
 */
 
+// Selecting, Creating, and Deleting Elements
+
+// For selecting the entire document of any webpage
+console.log(document.documentElement);
+console.log(document.head);
+console.log(document.body);
+
+const header = document.querySelector('.header');
+const allSections = document.querySelectorAll('.section');
+console.log(allSections);
+
+document.getElementById('section--1');
+const allButtons = document.getElementsByTagName('button'); // all the elements with name button
+console.log(allButtons);
+
+console.log(document.getElementsByClassName('btn'));
+
+// Creating and inserting elements
+// .insertAdjacentHTML -- insertAdjacentHTML(position, text)
+/*
+<!-- beforebegin -->
+<p>
+  <!-- afterbegin -->
+  foo
+  <!-- beforeend -->
+</p>
+<!-- afterend -->
+*/
+
+const message = document.createElement('div');
+message.classList.add('cookie-message');
+// message.textContent = 'We use cookies for improved functionality and analytics.';
+message.innerHTML = 'We use cookies for improved functionality and analytics. <button class="btn btn--close--cookie">Got it!</button>';
+
+// header.prepend(message); // prepend() adds the element as the first child of the element
+header.append(message); // append() adds the element as the last child of the element. 
+// NOTE: We first prepended the element and then appended it. And this append() method basically moved the element from being the first child to being the last child. 
+
+// Now if we want it at both the places, we need to include the below code
+// header.append(message.cloneNode(true));
+
+// header.before(message);
+// header.after(message);
+
+// Delete element
+document.querySelector('.btn--close--cookie').addEventListener('click', function(){
+  // message.remove();
+  // Previously before the remove() method had been introduced, we used to remove elements like this:
+  message.parentElement.removeChild(message);
+})
