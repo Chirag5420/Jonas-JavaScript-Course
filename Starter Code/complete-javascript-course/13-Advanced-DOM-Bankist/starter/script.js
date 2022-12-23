@@ -133,3 +133,50 @@ document.querySelector('.btn--close--cookie').addEventListener('click', function
   // Previously before the remove() method had been introduced, we used to remove elements like this:
   message.parentElement.removeChild(message);
 })
+
+// Styles, Attributes, and Classes
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+
+console.log(message.style.height); // OUTPUT:  (Since the height property does not exist in inline style)
+console.log(message.style.backgroundColor); // OUTPUT: rgb(55, 56, 61)
+
+// Another way to get the styles
+console.log(getComputedStyle(message).color); // We get all of the properties with all of the values
+
+message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+
+// document.documentElement.style.setProperty('--color-primary', 'orangered')
+
+// Attributes
+const logo = document.querySelector('.nav__logo');
+console.log(logo.src);
+console.log(logo.alt);
+console.log(logo.className);
+
+logo.alt = 'Beautiful minimalist logo';
+
+// Non-standard
+console.log(logo.designer); // OUTPUT: undefined
+
+// Alternative
+console.log(logo.getAttribute('designer')); // OUTPUT: Jonas
+logo.setAttribute('company', 'Bankist');
+
+console.log(logo.getAttribute('src')); // OUTPUT: img/logo.png (it returns the relative path instead of the absolute path)
+
+const link = document.querySelector('.nav__link--btn');
+console.log(link.href); // OUTPUT: http://127.0.0.1:8080/# (returns the absolute path)
+console.log(link.getAttribute('href')); // OUTPUT: # (returns the relative path)
+
+// Data attributes (Data attributes are special kind of attributes that start with the words data)
+console.log(logo.dataset.versionNumber); // the attribute starts with data and then we use camel-case where we have dash) -- So data-version-number got transformed to versionNumber
+
+// Classes
+logo.classList.add('c');
+logo.classList.remove('c');
+logo.classList.toggle('c');
+logo.classList.contains('c');
+
+// Don't use
+// logo.className = 'jonas'; // As this would overwrite the existing classes and only allow one class to be there 
