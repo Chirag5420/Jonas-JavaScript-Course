@@ -242,3 +242,30 @@ setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 // As soon as the event reaches the target element, the target phase begins where events can be handled right at the target (using event-listeners). So event-listeners wait for a certain event to happen on a certain element, and as soon as the event occurs, it runs the attached callback function. 
 // After reaching the target, the event actually travels all the way up to the document root again in the so-called bubbling phase. So we say events bubble up from the target to the document root. And just like in the capturing phase, the event passes through all its parents elements. And only through the parent elements, not the sibling elements. 
 // It is very important to know about the above flow, because basically its as if the event also happened in each of the parent elements. So again, as the event bubbles through a parent element, its as if the event had happened right in that very element. What this means is that if we attach the same event listener, also for example to section element (parent to the anchor element), then it would get the exact same alert window for the section element as well. 
+
+// Event Propagation in Practice 
+
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
+const randomColor = () => `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+
+document.querySelector('.nav__link').addEventListener('click', function(e){
+  this.style.backgroundColor = randomColor();
+  console.log('LINK', e.target, e.currentTarget);
+  console.log(e.currentTarget === this);
+
+  // Stop propagation
+  // e.stopPropagation();
+});
+
+document.querySelector('.nav__links').addEventListener('click', function(e){
+  this.style.backgroundColor = randomColor();
+  console.log('CONTAINER', e.target, e.currentTarget);
+});
+
+document.querySelector('.nav').addEventListener('click', function(e){
+  this.style.backgroundColor = randomColor();
+  console.log('NAV', e.target, e.currentTarget);
+})
+
+// NOTE: In order to activate the capturing phase, we need to add a third parameter (boolean) to the addEventListener method. 
