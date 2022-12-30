@@ -89,6 +89,28 @@ document.querySelector('.nav__links').addEventListener('click', function(e){
     document.querySelector(id).scrollIntoView({behavior: 'smooth'});
   }
 })
+
+// Building a Tabbed Component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+// Using Events Delegation 
+tabsContainer.addEventListener('click', function(e){
+  const clicked = e.target.closest('.operations__tab');
+
+  // Guard clause 
+  if(!clicked) return;
+
+  // Active tab
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  clicked.classList.add('operations__tab--active');
+
+  // Activate content area
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+  document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active');
+});
+
 // How the DOM Really Works
 /*
   Review: What is the DOM?
@@ -327,7 +349,7 @@ document.querySelector('.nav').addEventListener('click', function(e){
 // NOTE: In order to activate the capturing phase, we need to add a third parameter (boolean) to the addEventListener method. 
 */
 // Event Delegation: Implementing Page Navigation 
-
+/*
 // DOM Traversing 
 const h1 = document.querySelector('h1');
 
@@ -356,3 +378,4 @@ console.log(h1.parentElement.children);
 [...h1.parentElement.children].forEach(function(el){
   if(el !== h1) el.style.transform = 'scale(0.5)'
 });
+*/
