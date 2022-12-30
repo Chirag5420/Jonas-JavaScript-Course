@@ -166,6 +166,8 @@ window.addEventListener('scroll', function(){
 //   });
 // };
 
+// NOTE: In the current example, whenever the first section (our target -- section1) is intersecting the viewport at 10%, so the viewport because that's the root and 10% because that's the threshold, then the obsCallback function would be invoked. 
+
 // const obsOptions = {
 //   root: null,
 //   threshold: [0, 0.2],
@@ -191,6 +193,29 @@ const headerObserver = new IntersectionObserver(stickyNav, {
   rootMargin: `-${navHeight}px`,
 });
 headerObserver.observe(header);
+
+// Revealing Elements on Scroll
+const allSection = document.querySelectorAll('.section')
+const revealSection = function(entries, observer){
+  const [entry] = entries;
+  console.log(entry);
+
+  if(!entry.isIntersecting) return;
+
+  entry.target.classList.remove('section--hidden');
+
+  observer.unobserve(entry.target);
+}
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+});
+
+allSection.forEach(function(section){
+  sectionObserver.observe(section);
+  section.classList.add('section--hidden');
+})
 // How the DOM Really Works
 /*
   Review: What is the DOM?
