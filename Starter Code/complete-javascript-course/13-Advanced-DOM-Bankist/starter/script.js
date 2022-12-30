@@ -144,6 +144,19 @@ nav.addEventListener('mouseover', handleHover.bind(0.5));
 
 nav.addEventListener('mouseout', handleHover.bind(1));
 
+// Sticky navigation
+// This event would be fired everytime we scroll in our page
+
+const initialCoords = section1.getBoundingClientRect();
+console.log(initialCoords);
+
+window.addEventListener('scroll', function(){
+  console.log(window.scrollY);
+
+  if(window.scrollY > initialCoords.top) nav.classList.add('sticky'); 
+  else nav.classList.remove('sticky');
+});
+
 // How the DOM Really Works
 /*
   Review: What is the DOM?
