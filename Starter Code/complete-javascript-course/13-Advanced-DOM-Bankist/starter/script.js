@@ -600,3 +600,25 @@ console.log(h1.parentElement.children);
   if(el !== h1) el.style.transform = 'scale(0.5)'
 });
 */
+
+// Lifecycle DOM Events
+// DOM Content Loaded - This event is fired by the document as soon as the HTML is completely parsed, which means that the HTML has been downloaded and been converted to the DOM tree. Also, all scripts must be downloaded and executed before the DOM content loaded event can happen. 
+
+document.addEventListener('DOMContentLoaded', function(e){
+  console.log('HTML parsed and DOM tree built!', e);
+});
+
+// Load Event - The load event is fired by the window, as soon as not only the HTML is parsed, but also all the images and external resources like CSS files are also loaded. So basically when the complete page has finished loading is when this event gets fired. 
+
+window.addEventListener('load', function(e){
+  console.log('Page fully loaded', e);
+});
+
+// Before Unload Event - This event is created immediately before a user is about to leave a page. So for example, after clicking this close button in the browser tab. 
+// window.addEventListener('beforeunload', function(e){
+//   e.preventDefault();
+
+//   console.log(e);
+
+//   e.returnValue = '';
+// });
