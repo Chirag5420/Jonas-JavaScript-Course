@@ -27,3 +27,27 @@
     - Polymorphism
       - A child class can overwrite a method it inherited from a parent class [it's more complex than that, but enough for our purposes].
 */
+
+// OOP in JavaScript 
+/*
+  - Objects (instances) are instantiated from a class, which functions like a blueprint;
+  - The process of creating actual objects (instances) from theoretical class is called instantiation.
+  
+  - In JavaScript, we have something called prototypes and all objects in JS are linked to a certain prototype;
+  - Each object has a prototype;
+  - The prototype object contains methods and properties that all the objects that are linked to that prototype can access and use. This behaviour is usually called prototypal inheritance.
+  - Prototypal inheritance: The prototype contains methods (behaviour) that are accessible to all objects linked to that prototype;
+  - Objects inherit methods and properties from the prototype which is the reason why this mechanism is called prototypal inheritance;
+  - Behaviour is delegated to the linked prototype object;
+
+  3 Ways of Implementing Prototypal Inheritance in JavaScript
+  - Constructor Functions
+    - Technique to create objects from a function;
+    - This is how built-in objects like Arrays, Maps or Sets are actually implemented.
+  - ES6 Classes
+    - Modern alternative to constructor function syntax;
+    - "Syntactic sugar": behind the scenes, ES6 classes work exactly like constructor functions;
+    - ES6 classes do NOT behave like classes in "classical OOP" (last lecture)
+  - Object.create()
+    - The easiest and most straightforward way of linking an object to a prototype object;
+*/
