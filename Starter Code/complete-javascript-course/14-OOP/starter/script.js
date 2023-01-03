@@ -51,3 +51,42 @@
   - Object.create()
     - The easiest and most straightforward way of linking an object to a prototype object;
 */
+
+// Constructor Functions and the new Operator
+
+// The only difference between a regular function and constructor function is that we call the constructor function with the new operator
+
+// In OOP, there is this convention that constructor function always start with a capital letter.
+// NOTE: Arrow function would not work as a function constructor and that's because it does not have its own this keyword, so only function declarations and function expressions. 
+const Person = function (firstName, birthYear) {
+  // console.log(this); // We get an empty object as mentioned in point 2
+
+  // Instance properties
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+
+  // Never do this - Because let's say we create thousands or tens of thousands of objects from this constructor function. Then what would happen is that each of those objects would carry around this calcAge function and it would be terrible for the performance of our code. But in order to solve this problem we would make use of prototypes and prototypal inheritance.
+
+  // this.calcAge = function(){
+  //   console.log(2037 - birthYear);
+  // }
+}
+
+/*
+  The new operator is a very special operator and the following happen when we call a function with the new operator like this:
+  1. New {} is created
+  2. function is called, this = {}
+  3. {} linked to prototype
+  4. function automatically returns {}
+*/
+const jonas = new Person('Jonas', 1991);
+console.log(jonas);
+
+const matilda = new Person('Matilda', 2017);
+const jack = new Person('Jack', 1975);
+console.log(matilda, jack);
+
+const jay = 'Jay';
+
+console.log(jonas instanceof Person); // true
+console.log(jay instanceof Person); // false
