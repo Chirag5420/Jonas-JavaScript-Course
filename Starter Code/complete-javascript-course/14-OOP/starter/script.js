@@ -90,3 +90,34 @@ const jay = 'Jay';
 
 console.log(jonas instanceof Person); // true
 console.log(jay instanceof Person); // false
+
+// Prototypes
+/*
+  First each and every function in JavaScript automatically has a property called prototype. And that includes of course, constructor functions. Now every object that is created by a certain constructor function will get access to all the methods and properties that we define on the constructors prototype property. 
+*/
+
+Person.prototype.calcAge = function(){
+  console.log(2037 - this.birthYear);
+}
+
+jonas.calcAge();
+matilda.calcAge();
+
+// The Step Number 3 of linking object to prototype is what creates this property __proto__ and sets it to the Prototype property of the constructor function that is being called 
+console.log(jonas.__proto__);
+console.log(jonas.__proto__ === Person.prototype);
+
+console.log(Person.prototype.isPrototypeOf(jonas)); // true
+console.log(Person.prototype.isPrototypeOf(matilda)); // true
+console.log(Person.prototype.isPrototypeOf(Person)); // false
+
+// Setting properties on the Prototype 
+Person.prototype.species = 'Homo Sapiens';
+
+// NOTE: The species property would not be directly visible but instead visible inside the __proto__ property
+console.log(jonas);
+console.log(matilda);
+
+// So own properties are only the ones that are directly declared on the object 
+console.log(jonas.hasOwnProperty('firstName')); // true
+console.log(jonas.hasOwnProperty('species')); // false (since it only has access to this attribute because of Person.prototype)
