@@ -121,3 +121,30 @@ console.log(matilda);
 // So own properties are only the ones that are directly declared on the object 
 console.log(jonas.hasOwnProperty('firstName')); // true
 console.log(jonas.hasOwnProperty('species')); // false (since it only has access to this attribute because of Person.prototype)
+
+// Prototypal Inheritance and The Prototype Chain 
+/*
+  Everything starts with the Person constructor function. The constructor function has a prototype property which is an object and inside that object we defined the calcAge method. 
+
+  So Person.prototype.constructor is going to point back to the original Person Constructor Function itself.
+
+  NOTE: Person.prototype is not the prototype of Person, but the prototype of all the objects created by Person. 
+
+  When we call a function with the new operator, 
+  1. A new empty object is created instantly
+  2. this keyword in construtor function call is set to the new object 
+  3. The new object is linked (__proto__ property) to the constructor function's prototype property 
+  4. The new object is automatically returned from the constructor function call
+
+  Why is this so powerful?
+  - The reason why prototypal inheritance / delegation is very useful in this example is because, now the calcAge function would be inherited by all the Person objects without the method being directly attached to all the objects themselves. This is essential for code performance. Because imagine, if we had a 1000 objects and all of them carried the calcAge function with them around it would certainly impact performance. So instead they all can simply use the calcAge function from their common prototype. 
+
+  Prototype chain - Now the fact that Jonas object is connected to a prototype and the ability of looking up methods and properties in a prototype is what we call the prototype chain. So the jonas object and its prototype basically form a prototype chain. 
+
+  But the prototype chain doesn't end here! Every object in JavaScript has a prototype. So Person.prototype itself must also have a prototype.
+  And the prototype of Person.prototype is Object.prototype 
+
+  Person.prototype is just a simple object which means that it has been built by the built-in object constructor function. And this is the function which is automatically called when we write an object literal.
+
+  Now this entire series of links between the objects is what is called the prototype chain and object.prototype is usually the top which means its prototype (__proto__) is null, which then marks the end of the prototype chain. 
+*/
