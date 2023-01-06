@@ -148,3 +148,30 @@ console.log(jonas.hasOwnProperty('species')); // false (since it only has access
 
   Now this entire series of links between the objects is what is called the prototype chain and object.prototype is usually the top which means its prototype (__proto__) is null, which then marks the end of the prototype chain. 
 */
+
+// Prototypal Inheritance on Built-In Objects 
+console.log(jonas.__proto__); // Person.prototype
+console.log(jonas.__proto__.__proto__); // Object.prototype (top of prototype chain)
+console.log(jonas.__proto__.__proto__.__proto__); // null
+
+console.dir(Person.prototype.constructor); // Person Constructor Function
+
+const arr = [3, 6, 6, 5, 6, 9, 9];
+console.log(arr.__proto__); 
+console.log(arr.__proto__ === Array.prototype); // true
+
+// Since we know that all arrays inherit the methods from Array.prototype; We can use this knowledge to further extend the functionality of arrays.
+
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+
+console.log(arr.unique());
+
+// NOTE: We should not include methods on built-in objects for two reasons:
+// - Probably JS might add a function with the same name but a different functionality in its next release and then its going to break our code
+// - Secondly, if we are working with a team of developers then multiple developers might create the same functionality with different names and its going to cause a lot of bugs. 
+
+const h1 = document.querySelector('h1');
+console.dir(h1);
+console.dir(x => x + 1);
