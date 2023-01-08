@@ -175,3 +175,36 @@ console.log(arr.unique());
 const h1 = document.querySelector('h1');
 console.dir(h1);
 console.dir(x => x + 1);
+
+// ES6 Classes 
+// class expression
+// const PersonCl = class {}
+
+
+// class declaration
+class PersonCl {
+  constructor(firstName, birthYear){
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // NOTE: All of these methods that we are writing in the class, outside of the constructor will be on the prototype of the objects and not on the objects themselves. So just like before, ts Prototypal Inheritance. 
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+}
+
+const jessica = new PersonCl('Jessica', 1996);
+console.log(jessica);
+jessica.calcAge();
+
+console.log(jessica.__proto__ === PersonCl.prototype); // true
+
+PersonCl.prototype.greet = function(){
+  console.log(`Hey ${this.firstName}`);
+};
+jessica.greet();
+
+// 1. Classes are NOT hoisted. So even if they are class declartions. So function declartions are hoisted, which means we can use them before they are declared in the code. But with classes that doesn't work. 
+// 2. Classes are first-class citizens. So it means we can pass them into functions and also return them from functions. 
+// 3. Classes are executed in strict mode.
