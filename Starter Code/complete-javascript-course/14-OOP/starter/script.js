@@ -91,6 +91,15 @@ const jay = 'Jay';
 console.log(jonas instanceof Person); // true
 console.log(jay instanceof Person); // false
 
+// Static methods
+Person.hey = function(){
+  console.log('Hey there 👋🏻');
+  console.log(this); // Would be the entire Person constructor because that is the rule, whatever object is calling the method will be the this keyword inside of that function. So here this keyword, is simply that entire constructor function.
+}
+
+Person.hey();
+// jonas.hey(); // TypeError jonas.hey is not a function (This occurs because it is simply not there in the prototype of the Jonas object. So there is no way, the Jonas object could inherit it) 
+
 // Prototypes
 /*
   First each and every function in JavaScript automatically has a property called prototype. And that includes of course, constructor functions. Now every object that is created by a certain constructor function will get access to all the methods and properties that we define on the constructors prototype property. 
@@ -188,6 +197,7 @@ class PersonCl {
     this.birthYear = birthYear;
   }
 
+  // Instance methods
   // NOTE: All of these methods that we are writing in the class, outside of the constructor will be on the prototype of the objects and not on the objects themselves. So just like before, ts Prototypal Inheritance. 
   calcAge() {
     console.log(2037 - this.birthYear);
@@ -211,6 +221,12 @@ class PersonCl {
   get fullName(){
     return this._fullName;
   }
+
+  // Static Methods
+  static hey(){
+    console.log('Hey there 👋🏻');
+    console.log(this);
+  }
 }
 
 const jessica = new PersonCl('Jessica Davis', 1996);
@@ -226,6 +242,9 @@ jessica.greet();
 console.log(jessica.age);
 
 const walter = new PersonCl('Walter White', 1965);
+
+PersonCl.hey();
+// NOTE: Static methods are not available on the instances and sometimes they are still useful to implement some kind of helper function about a class or about a constructor function 
 
 // 1. Classes are NOT hoisted. So even if they are class declartions. So function declartions are hoisted, which means we can use them before they are declared in the code. But with classes that doesn't work. 
 // 2. Classes are first-class citizens. So it means we can pass them into functions and also return them from functions. 
