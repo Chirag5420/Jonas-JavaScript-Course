@@ -369,28 +369,34 @@ class Account {
   constructor(owner, currency, pin){
     this.owner = owner;
     this.currency = currency; 
-    this.pin = pin;
-    this.movements = [];
+    this._pin = pin;
+
+    //protected property (we add the _ as a convention, to let the other developers and yourself know that these must not be modified externally)
+    this._movements = [];
     this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${owner}`);
   }
 
   // these methods are the interface to our objects (Public Interface)
+  getMovements(){
+    return this._movements;
+  }
+
   deposit(val){
-    this.movements.push(val);
+    this._movements.push(val);
   }
 
   withdraw(val){
     this.deposit(-val);
   }
 
-  approveLoan(val){
+  _approveLoan(val){
     return true;
   }
 
   requestLoan(val){
-    if(this.approveLoan(val)){
+    if(this._approveLoan(val)){
       this.deposit(val);
       console.log(`Loan approved`);
     }
@@ -407,7 +413,16 @@ console.log(acc1);
 acc1.deposit(250);
 acc1.withdraw(140);
 acc1.requestLoan(1000);
-acc1.approveLoan(1000); // We should not be allowed to access this method. So this kind of an interal method that only the requestLoan method should be able to use. 
+// acc1.approveLoan(1000); // We should not be allowed to access this method. So this kind of an interal method that only the requestLoan method should be able to use. 
+
+console.log(acc1._movements);
 
 console.log(acc1);
-console.log(acc1.pin);
+// console.log(acc1.pin);
+
+// Encapsulation: Protected Properties and Methods
+/*
+  Two reasons why we need Data Encapsulation and Data Privacy:
+  - First, it is to prevent code from outside of a class to accidentally manipulate our data inside the class
+  - Secondly, this also the reason we implement a public interface. So we are not supposed to manually mess with a property and therefore we should encapsulate it. Besides, when we expose only a small interface, so a small API consisting only of a few public methods then we change all the other interal methods with more confidence. 
+*/
