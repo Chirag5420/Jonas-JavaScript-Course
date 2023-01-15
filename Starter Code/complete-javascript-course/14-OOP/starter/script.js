@@ -363,3 +363,51 @@ jennifer.init('Jennifer', 2010, 'Computer Science');
 jennifer.introduce();
 jennifer.calcAge();
 console.log(jennifer);
+
+// Another Class Example
+class Account {
+  constructor(owner, currency, pin){
+    this.owner = owner;
+    this.currency = currency; 
+    this.pin = pin;
+    this.movements = [];
+    this.locale = navigator.language;
+
+    console.log(`Thanks for opening an account, ${owner}`);
+  }
+
+  // these methods are the interface to our objects (Public Interface)
+  deposit(val){
+    this.movements.push(val);
+  }
+
+  withdraw(val){
+    this.deposit(-val);
+  }
+
+  approveLoan(val){
+    return true;
+  }
+
+  requestLoan(val){
+    if(this.approveLoan(val)){
+      this.deposit(val);
+      console.log(`Loan approved`);
+    }
+  }
+};
+
+const acc1 = new Account('Jonas', 'EUR', 1111);
+console.log(acc1);
+
+// Instead of manually creating these, we should instead create methods which would interact with these properties
+// acc1.movements.push(250);
+// acc1.movements.push(-140);
+
+acc1.deposit(250);
+acc1.withdraw(140);
+acc1.requestLoan(1000);
+acc1.approveLoan(1000); // We should not be allowed to access this method. So this kind of an interal method that only the requestLoan method should be able to use. 
+
+console.log(acc1);
+console.log(acc1.pin);
