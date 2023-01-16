@@ -363,7 +363,7 @@ jennifer.init('Jennifer', 2010, 'Computer Science');
 jennifer.introduce();
 jennifer.calcAge();
 console.log(jennifer);
-
+/*
 // Another Class Example
 class Account {
   constructor(owner, currency, pin){
@@ -419,10 +419,80 @@ console.log(acc1._movements);
 
 console.log(acc1);
 // console.log(acc1.pin);
-
+*/
 // Encapsulation: Protected Properties and Methods
 /*
   Two reasons why we need Data Encapsulation and Data Privacy:
   - First, it is to prevent code from outside of a class to accidentally manipulate our data inside the class
   - Secondly, this also the reason we implement a public interface. So we are not supposed to manually mess with a property and therefore we should encapsulate it. Besides, when we expose only a small interface, so a small API consisting only of a few public methods then we change all the other interal methods with more confidence. 
 */
+
+// Encapsulation: Private Class Fields and Methods
+// Class Fields : In traditional OOP languages like Java and C++, properties are usually called fields. 
+// In the proposal, there are four different kinds of fields and methods 
+// 1) Public Fields
+// 2) Private Fields
+// 3) Public Methods
+// 4) Private Methods
+// (there is also a static version)
+class Account {
+  // Public Fields (these fields are not added to the prototype, they are on the instances)
+  locale = navigator.language;
+
+  // Private Fields (are declared by adding a hash # and these are available on the instances and not on the prototype)
+  #movements = [];
+  #pin;
+
+  constructor(owner, currency, pin){
+    this.owner = owner;
+    this.currency = currency; 
+    this.#pin = pin;
+
+    //protected property (we add the _ as a convention, to let the other developers and yourself know that these must not be modified externally)
+    // this._movements = [];
+    // this.locale = navigator.language;
+
+    console.log(`Thanks for opening an account, ${owner}`);
+  }
+
+  //3) Public methods 
+  // these methods are the interface to our objects (Public Interface)
+  getMovements(){
+    return this.#movements;
+  }
+
+  deposit(val){
+    this.#movements.push(val);
+  }
+
+  withdraw(val){
+    this.deposit(-val);
+  }
+
+  requestLoan(val){
+    if(this._approveLoan(val)){
+      this.deposit(val);
+      console.log(`Loan approved`);
+    }
+  }
+
+  // 4) Private Methods (these methods are being added a private class field to the instance and not the prototype and therefore we would use protected for now with _)
+  // #approveLoan(val){
+  _approveLoan(val){
+    return true;
+  }
+
+  // these static functions are not available on the instances but only on the class itself
+  static helper(){
+    console.log('Helper');
+  }
+};
+
+const acc1 = new Account('Jonas', 'EUR', 1111);
+console.log(acc1);
+console.log(acc1.getMovements());
+acc1.requestLoan(1000);
+// console.log(acc1.#approveLoan(1000));
+// console.log(acc1.#pin); // cannot be accessed as its a truly private class field 
+
+Account.helper();
