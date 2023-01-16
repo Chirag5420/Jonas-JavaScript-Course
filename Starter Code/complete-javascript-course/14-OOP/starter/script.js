@@ -509,3 +509,71 @@ acc1.deposit(300)
     .requestLoan(25000)
     .withdraw(4000);
 console.log(acc1.getMovements());
+
+// ES6 Classes Summary 
+// Inheritance between classes, automatically sets prototype
+class StudentOverview extends Person {
+  // Public field (similar to property, available on created object)
+  university = 'University of Lisbon';
+
+  // Private fields (not accessible outside of class)
+  #studyHours = 0;
+  #course;
+
+  // Static Public field (available only on class)
+  static numSubjects = 10;
+
+  // Constructor method, called by new operator. Mandatory in regular class, might be omitted in a child class
+  constructor(fullName, birthYear, startYear, course){
+    // Call to parent (super) class (necessary with extends). Needs to happen before accessing this
+    super(fullName, birthYear);
+
+    // Instance property (available on created object)
+    this.startYear = startYear;
+
+    // Redefining private field
+    this.#course = course;
+  }
+
+  // Public method
+  introduce(){
+    console.log(`I study ${this.#course} at ${this.university}`);
+  }
+
+  study(h){
+    // Referencing private field and method 
+    this.#makeCoffee();
+    this.#studyHours += h;
+  }
+
+  #makeCoffee(){
+    return 'Here is a coffee for you 🤓';
+  }
+
+  // Getter method - is used so that we can get a value out of an object by simply writing a property instead of writing a method. So by simply writing student.testScore() and that would then run the getter method
+  get testScore() {
+    return this._testScore;
+  }
+
+  // Setter method - we can simply define the testScore by setting it to some value instead of calling a testScore method 
+  // NOTE: use _ to set property with same name as method, and also add getter 
+  set testScore(score) {
+    this._testScore = score <= 20 ? score : 0;
+  }
+
+  // Static method (available only on class. Cannot access instance properties nor methods, only static ones)
+  static printCurriculum(){
+    console.log(`There are ${this.numSubjects} subjects`);
+  }
+}
+
+// Create a new object using the new operator 
+const student = new Student('Jonas', 2020, 2037, 'Medicine');
+
+// NOTE:
+/*
+  - Classes are just "syntatic sugar" over constructor functions
+  - Classes are not hoisted
+  - Classes are first-class citizens
+  - Class body is always executed in strict mode
+*/
