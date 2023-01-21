@@ -21,7 +21,23 @@ if(navigator.geolocation){
         const {longitude} = position.coords;
         // console.log(latitude, longitude);
         console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
+
+        const coords = [latitude, longitude];
+
+        // The second parameter (13) is the zoom level
+        const map = L.map('map').setView(coords, 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker(coords).addTo(map)
+            .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+            .openPopup();
     }, function(){
         alert('Could not get your position')
     });
 }
+
+// We are able to access the firstName variable declared in other.js as its a global variable in that script. So any variable that is global in any script, will be available to all the other scripts. 
+// console.log(firstName);
