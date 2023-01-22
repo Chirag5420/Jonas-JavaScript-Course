@@ -14,6 +14,9 @@ const inputElevation = document.querySelector('.form__input--elevation');
 //Using the Geolocation API
 // The function takes in two callback functions, the first one that will be called on success ('Success Callback'). So whenever the browser successfully got the coordinates of the current position of the user and the second callback is the 'Error Callback' which is the one that is going to be called when there happened an error while getting the coordinates.
 
+// Declaring Global Variables so that in can be used in the submit event listener function
+let map, mapEvent;
+
 if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(function(position) {
         // console.log(position);
@@ -25,7 +28,7 @@ if(navigator.geolocation){
         const coords = [latitude, longitude];
 
         // The second parameter (13) is the zoom level
-        const map = L.map('map').setView(coords, 13);
+        map = L.map('map').setView(coords, 13);
         // console.log(map); 
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -34,21 +37,13 @@ if(navigator.geolocation){
 
         // Displaying a Map Marker
         // The on() method is similar to the addEventListener method and this method had been declared by the Leaflet library 
-        map.on('click', function(mapEvent){
-            console.log(mapEvent);
-
-            const {lat, lng} = mapEvent.latlng;
-
-            L.marker([lat, lng]).addTo(map)
-            .bindPopup(L.popup({
-                maxWidth: 250,
-                minWidth: 200,
-                autoClose: false,
-                closeOnClick: false,
-                className: 'running-popup'
-            }))
-            .setPopupContent('Workout')
-            .openPopup();
+        
+        // Handling clicks on map
+        map.on('click', function(mapE){
+            mapEvent = mapE;
+            // Rendering Workout Input Form
+            form.classList.remove('hidden');
+            inputDistance.focus();
         });
     }, function(){
         alert('Could not get your position')
@@ -57,3 +52,30 @@ if(navigator.geolocation){
 
 // We are able to access the firstName variable declared in other.js as its a global variable in that script. So any variable that is global in any script, will be available to all the other scripts. 
 // console.log(firstName);
+
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    //Clear input fields
+    inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = '';
+
+    // Display the marker
+    console.log(mapEvent);
+    const {lat, lng} = mapEvent.latlng;
+
+    L.marker([lat, lng]).addTo(map)
+    .bindPopup(L.popup({
+        maxWidth: 250,
+        minWidth: 200,
+        autoClose: false,
+        closeOnClick: false,
+        className: 'running-popup'
+    }))
+    .setPopupContent('Workout')
+    .openPopup();
+});
+
+inputType.addEventListener('change', function(){
+    inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
+    inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
+});
