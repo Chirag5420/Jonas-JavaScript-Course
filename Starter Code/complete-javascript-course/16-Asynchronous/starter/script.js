@@ -36,7 +36,7 @@ const countriesContainer = document.querySelector('.countries');
 // getCountryData('portugal');
 // getCountryData('usa');
 
-/*
+
 // Welcome to Callback Hell 
 
 const renderCountry = function(data, className = '') {
@@ -56,7 +56,7 @@ const renderCountry = function(data, className = '') {
         countriesContainer.insertAdjacentHTML('beforeend', html);
         countriesContainer.style.opacity = 1;
 }
-
+/*
 const getCountryAndNeighbour = function(country) {
 
     // AJAX call country 1
@@ -133,3 +133,23 @@ console.log(request);
     - However, in order for a promise to exist it must be build. In the case of fetch function, it is the fetch function that builds the promise and returns it for us to consume. 
 */
 
+// Consuming Promises 
+
+// const getCountryData = function (country) {
+//     fetch(`https://restcountries.com/v2/name/${country}`).then(function(response) {
+//         console.log(response);
+//         return response.json();
+//     })
+//     .then(function(data) {
+//         console.log(data);
+//         renderCountry(data[0]);
+//     });
+// };
+
+const getCountryData = function (country) {
+    fetch(`https://restcountries.com/v2/name/${country}`)
+    .then((response) => response.json())
+    .then((data) => renderCountry(data[0]));
+};
+
+getCountryData('portugal');
