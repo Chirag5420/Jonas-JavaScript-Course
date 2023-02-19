@@ -36,6 +36,7 @@ const countriesContainer = document.querySelector('.countries');
 // getCountryData('portugal');
 // getCountryData('usa');
 
+/*
 // Welcome to Callback Hell 
 
 const renderCountry = function(data, className = '') {
@@ -101,3 +102,34 @@ setTimeout(() => {
         }, 1000);
     }, 1000);
 }, 1000);
+
+*/
+
+// Promises and the Fetch API
+const request = fetch('https://restcountries.com/v2/name/portugal');
+console.log(request);
+
+/*
+    Promise: An object that is used as a placeholder for the future result of an asynchronous operation 
+
+    Less Formal
+    Promise: A container for an asynchronously delivered value. 
+
+    Less Formal 
+    Promise: A container for a future value (e.g.: response coming from an AJAX call)
+
+    Advantages of using Promises:
+    - We no longer need to rely on events and callbacks passed into asynchronous functions to handle asynchronous results 
+    - Instead of nesting callbacks, we can chain promises for a sequence of asynchronous operations: escaping callback hell 
+
+    The PROMISE lifecycle 
+    - PENDING: Before the future value is available
+    - SETTLED: Asynchrnous task has finished 
+      - FULFILLED: Success! The value is now available 
+      - REJECTED: An error happened
+
+    CONSUME PROMISE
+    - For example, the promise that was returned from the fetch function 
+    - However, in order for a promise to exist it must be build. In the case of fetch function, it is the fetch function that builds the promise and returns it for us to consume. 
+*/
+
